@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sociedade Revolucionária</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarFixed">
+            <div class="container px-lg-5 alignNav">
+                <h6 id="pontosH6" class="navH6"></h6>
+                <h6 id="nickH6" class="navH6"></h6>
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Troca</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Missões</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </nav>
+        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="nickInput">Nick</label>
+                                    <input type="text" class="form-control" id="nickInput" placeholder="nick">
+                                </div>
+                                <div class="form-group">
+                                    <label for="senhaInput">Senha</label>
+                                    <input type="text" class="form-control" id="senhaInput" placeholder="senha">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" onclick="efetuarLogin()" class="btn btn-primary">Entrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Header-->
+        <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5" id="banner">
+                        <h1 class="display-5 fw-bold">Bem vindo a Guild Sociedade Revolucionária!</h1>
+                        <p class="fs-4">Este site tem como objetivo facilitar o acesso de vocês aos itens do game. Criei um sistema de pontos para que sejam trocados por itens.</p>
+                        <a class="btn btn-primary" id="questBtn" href="quests.html">Quests</a>
+                        <button type="button" id="btnLogin" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Login</button>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="pt-4">
+            <div class="container px-lg-5">
+                <div class="col-lg-12 col-xxl-12 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <h2 class="fs-4 fw-bold" style="text-align: center;margin-top: 10px;">Rank</h2>
+                        <div class="card-body card-body-center text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <label class="lable-select" style="margin-bottom: 5px;" for="tipoRank">Tipo do rank</label>
+                            <select class="form-control" id="tipoRank">
+                                <option value="NONE">Selecione uma opção</option>
+                                <option value="SK">Skill</option>
+                                <option value="QZ">Quiz</option>
+                                <option value="X1">X1</option>
+                                <option value="EE">Esconde esconde</option>
+                                <option value="LV">Level</option>
+                            </select>
+                            <div class="skillBox w-100">
+                                <label class="lable-select" for="tipoSkill">Skill</label>
+                                <select class="form-control" id="tipoSkill">
+                                    <option value="NONE">Selecione uma opção</option>
+                                    <option value="DF">Defesa</option>
+                                    <option value="PL">Pally</option>
+                                    <option value="KN">Kina</option>
+                                    <option value="MG">Mage</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row rankbox">
+                                <div class="col-md-12">
+                                    <ul class="list-group" id="listaRank">
+                    
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page Content-->
+        <section class="pt-4">
+            <div class="container px-lg-5">
+                <div class="row" style="margin-bottom: 50px;">
+                    <div class="col-md-12" style="display: flex;justify-content: center;">
+                        <h2>Itens Troca</h2>
+                    </div>
+                </div>
+                <div class="row gx-lg-5" id="itensCard">
+                    
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Guild Sociedade Revolucionária 2024</p></div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
