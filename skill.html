@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Extrair texto de imagem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styleSkill.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarFixed">
+        <div class="container px-lg-5 alignNav">
+            <h6 id="pontosH6" class="navH6"></h6>
+            <h6 id="nickH6" class="navH6"></h6>
+        </div>
+    </nav>
+    <section class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 imgAddCard">
+                    <input type="file" class="input-image">
+                    <button class="btnAdcImagens btnPadding btn btn-primary">Inserir Imagem</button>
+                    <button class="btnAtualizarSkill btnPadding btn btn-primary">Atualizar Skill</button>
+                    <a class="btn btn-primary btnPadding" href="index.html">Inicio</a>
+                    <textarea class="output-text" disabled></textarea>
+                </div>
+                <div class="col-md-8" style="margin-top: 10px;">
+                    <img src="" alt="" class="preview">
+                    <div class="barraProgresso"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/scriptSkill.js"></script>
+</body>
+</html>

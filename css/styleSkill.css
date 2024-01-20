@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ccc;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right{
+    flex: 1;
+}
+.input-image{
+    display: none;
+}
+
+.output-text{
+    display: block;
+    width: 100%;
+    min-height: 120px;
+    font-size: 1.2rem;
+}
+
+.btnPadding{
+    margin: 9px;
+    padding: 8px;
+    font-size: 1.1rem;
+}
+
+.preview{
+    display: block;
+    width: 100%;
+}
+
+.barraProgresso{
+    transition: width;
+    width: 0;
+    height: 20px;
+    margin-top: 10px;
+    background-color: green;
+}
+
+.imgAddCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
