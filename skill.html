@@ -22,23 +22,28 @@
     <section class="pt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 imgAddCard">
-                    <input type="file" class="input-image">
-                    <button class="btnAdcImagens btnPadding btn btn-primary">Inserir Imagem</button>
-                    <button class="btnAtualizarSkill btnPadding btn btn-primary">Atualizar Skill</button>
-                    <a class="btn btn-primary btnPadding" href="index.html">Inicio</a>
-                    <textarea class="output-text" disabled></textarea>
+                <div class="col-md-12 imgAddCard">
+                    <div class="mb-3">
+                        <label for="inputImage" class="form-label">Escolha uma imagem das suas skills.</label>
+                        <input class="form-control" type="file" id="inputImage" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-primary" onclick="clickAtualizar()">Atualizar Skills</button>
+                        <a href="index.html" class="btn btn-primary">Rank</a>
+                    </div>
                 </div>
-                <div class="col-md-8" style="margin-top: 10px;">
-                    <img src="" alt="" class="preview">
-                    <div class="barraProgresso"></div>
+                <div class="col-md-6 imgAddCard mb-3 mt-3">
+                    <textarea name="textSkills" style="text-align: center;height: 150px;" class="w-100" id="textSkills" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-md-6 imgAddCard">
+                    <img class="preview" alt="">
                 </div>
             </div>
         </div>
     </section>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
-    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script src="https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/scriptSkill.js"></script>
 </body>
