@@ -286,7 +286,7 @@ const trocarItem = async (item, pontoValor) => {
                 pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
 
                 Swal.fire({
-                    title: 'Login efetuado com sucesso',
+                    title: 'Troca efetuada com sucesso',
                     text: "Troca efetuada com sucessa, por favor avise o ADM.",
                     icon: 'success',
                     confirmButtonText: 'ok'
