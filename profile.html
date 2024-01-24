@@ -22,46 +22,30 @@
                 <p id="pontosH6" class="navH6"></p>
                 <p id="nickH6" class="navH6"></p>
                 <h6 class="navH6 levelGuild"><img src="assets/level-up.png" alt="" srcset=""><span id="levelGuild"></span></h6>
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Troca</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Missões</a></li>
-                    </ul>
-                </div> -->
+                <a href="index.html" class="btn btn-primary">início</a>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="py-5">
-            <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                    <div class="m-4 m-lg-5" id="banner">
-                        <h1 class="display-5 fw-bold">Quests</h1>
-                        <p class="fs-4">O sistema de quests funciona da seguinte forma. Serão entregues quests nessa tela e
-                            todos terão acesso a elas ao concluir uma vocês poderão adiciona-las as suas quests finalizadas. 
-                            Cada quest lhe entrega uma quantidade de pontos de acordo com sua dificuldade. Logo abaixo terá uma lista das quests disponíveis e suas respectivas descrições, concluam elas e ganhem pontos.</p>
-                        <a id="btnLogin" href="index.html" class="btn btn-primary">Início</a>
-
-                    </div>
-                </div>
-            </div>
-        </header>
 
         <section class="pt-4">
             <div class="container px-lg-5">
-              <div class="col-lg-12 col-xxl-12 mb-5">
-                    <h4>Xp da guild</h4>
-                    <div class="progress mb-5" id="xpGuild">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 10%"></div>
-                    </div>
-                  <div id="accordion">
-                  
-                      
-                  </div>
-              </div>
+                <div class="col-lg-12 col-xxl-12 mb-5" style="margin-top: 70px;">
+                    <h4>Estatisticas de suas skills</h4>
+                    <canvas id="graficoSkill"></canvas>
+                </div>
             </div>
-          </section>
+        </section>
+        
+        <section class="pt-4" id="sessaoTrocas">
+            <div class="container px-lg-5">
+                <div class="col-lg-12 col-xxl-12 mb-5">
+                    <h4>Lista de trocas</h4>
+                    <ul class="list-group" id="listaTrocas">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        
      
         <!-- Footer-->
         <footer class="py-5 bg-dark">
@@ -80,6 +64,6 @@
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="js/scriptQuests.js"></script>
+        <script src="js/scriptProfile.js"></script>
     </body>
 </html>

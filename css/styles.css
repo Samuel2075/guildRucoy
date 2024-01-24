@@ -78,6 +78,19 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
+.alinhamentoProfile {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.profile {
+  width: 50px;
+  padding: 5px;
+  background-color: white;
+  margin-right: 10px;
+  border-radius: 15px;
+}
 
 *,
 *::before,
@@ -116,9 +129,17 @@
   margin: 0;
   font-size: 15px;
 }
+
+.liListaTroca {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .alignNav{
   display: flex !important;
   justify-content: space-around !important;
+  margin: 5px !important;
 }
 
 .card-body-center {

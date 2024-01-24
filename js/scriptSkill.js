@@ -98,12 +98,32 @@ inputImage.addEventListener('change' , function(){
 
 function detectarTexto1(text) {
     let vetorSplit = text.split(':');
+    debugger
     if(vetorSplit.length == 6) {
         level = parseInt(vetorSplit[1].substring(0, 4));
         melee = parseInt(vetorSplit[2].substring(0, 4));
         dist = parseInt(vetorSplit[3].substring(0, 4));
         magic = parseInt(vetorSplit[4].substring(0, 4));
         defence = parseInt(vetorSplit[5].substring(0, 4));
+        if(isNaN(level)) {
+            level = parseInt(vetorSplit[1].split(' ')[2].substring(0,3));
+        }
+        if(isNaN(melee)) {
+            melee = parseInt(vetorSplit[1].split(' ')[2].substring(0,3));
+
+        }
+        if(isNaN(dist)) {
+            dist = parseInt(vetorSplit[1].split(' ')[2].substring(0,3));
+
+        }
+        if(isNaN(defence)) {
+            defence = parseInt(vetorSplit[1].split(' ')[2].substring(0,3));
+
+        }
+        if(isNaN(level)) {
+            level = parseInt(vetorSplit[1].split(' ')[2].substring(0,3));
+        }
+        
     } else if(vetorSplit.length == 4){
         let splitElementArray = [];
         vetorSplit = text.split('\n');
@@ -150,7 +170,26 @@ function detectarTexto1(text) {
         let filtrarVetor = vetorSplit.filter(function (str) { return str != '_' && str != ''; });
         filtrarVetor.forEach((element, index) => {
             splitElementArray = element.split(' ');
-            novoArray.push(splitElementArray[1]);
+            if(splitElementArray.length > 2) {
+                splitElementArray = element.split('_');
+                if(splitElementArray.length == 1 && splitElementArray[0].length > 4) {
+                    if(element.split('=').length > 1) {
+                        novoArray.push(element.split('=')[1].substring(1, 4));
+                    } else {
+                        if(splitElementArray[0].split(' ').length > 1) {
+                            novoArray.push(splitElementArray[0].split(' ')[1]);
+                        } else {
+                            novoArray.push(splitElementArray[0]);
+                        }
+                    }
+                } else {
+                    novoArray.push(splitElementArray[1]);
+                }
+            } else {
+                if(splitElementArray[0].length > 1) {
+                    novoArray.push(splitElementArray[1]);
+                }
+            }
         });
         level = parseInt(novoArray[0].substring(0, 4));
         melee = parseInt(novoArray[1].substring(0, 4));
@@ -204,6 +243,7 @@ async function detectText() {
                 threshold: 150 // Limiar de binarização (ajuste conforme necessário)
               }
             );
+
             detectarTexto1(result.text);
             let stringCampoTexto = `Level: ${level}\nMelee: ${melee}\nDist: ${dist}\nMagic: ${magic}\nDef: ${defence}`;
             saidaTexto.value = stringCampoTexto;

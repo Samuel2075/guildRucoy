@@ -42,7 +42,7 @@ const pegarTodosJogadores = async () => {
 }
 
 const atualizarJogador = (id, usuario) => {
-    db.collection("jogadores").doc(id).set(usuario)
+    db.collection("jogadores").doc(id).set(usuario);
 }
 
 const cadastrarJogadorLevelUp = async (usuario) => {
