@@ -158,6 +158,9 @@ function detectarTexto1(text) {
                 }
             }
         });
+        novoArray = novoArray.filter(function( element ) {
+            return element !== undefined;
+        });
         level = parseInt(novoArray[0].substring(0, 4));
         melee = parseInt(novoArray[1].substring(0, 4));
         dist = parseInt(novoArray[2].substring(0, 4));
@@ -233,7 +236,7 @@ async function detectText() {
         img.src = e.target.result;
 
         img.onload = async function() {
-          try {
+
             const result = await Tesseract.recognize(
               img,
               'por',
@@ -248,15 +251,7 @@ async function detectText() {
             let stringCampoTexto = `Level: ${level}\nMelee: ${melee}\nDist: ${dist}\nMagic: ${magic}\nDef: ${defence}`;
             saidaTexto.value = stringCampoTexto;
             // splitIsNaN = isNaN(parseInt(level)) || isNaN(parseInt(melee)) || isNaN(parseInt(dist)) || isNaN(parseInt(magic)) || isNaN(parseInt(defence));
-        } catch (error) {
-            console.error('Erro durante o reconhecimento:', error);
-            Swal.fire({
-                title: 'Falha ao processar a imagem!',
-                text: 'Ocorreu um erro durante o processamento.',
-                icon: 'error',
-                confirmButtonText: 'ok'
-            });
-          }
+       
         };
       };
 

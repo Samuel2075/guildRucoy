@@ -17,6 +17,7 @@ let usuarioLogado = window.localStorage.getItem("usuarioLogado");
 let levelGuild = document.querySelector('#levelGuild');
 let listaTrocas = document.querySelector('#listaTrocas');
 let sessaoTrocas = document.querySelector('#sessaoTrocas');
+let btnRegistrarColeta = document.querySelector("#btnRegistrarColeta");
 
 const pegarTodosJogadores = async () => {
     await db.collection('jogadores').get().then(data =>{
@@ -46,6 +47,10 @@ const deletarTroca = async (itemTroca) => {
         }
     });
     db.collection("trocas").doc(itemTroca.id).delete();
+}
+
+const atualizarJogador = (usuario) => {
+    db.collection("jogadores").doc(usuario.id).set(usuario)
 }
 
 const criarGraficoSkill = () => {
@@ -128,11 +133,65 @@ const preencherCampos = () => {
     nickH6.innerText = usuarioLogado.nick;
 }
 
+const criarComponenteListaContribuicao = (jogador) => {
+    var liContribuicao = document.createElement('li');
+    var spanContribuicao = document.createElement('span');
+    liContribuicao.className = "list-group-item d-flex justify-content-between align-items-center";
+    spanContribuicao.className = "badge badge-primary badge-pill";
+    liContribuicao.innerText = jogador.nick;
+    spanContribuicao.innerText = jogador.valorColeta.toLocaleString('pt-BR');
+    spanContribuicao.style.backgroundColor = 'blue';
+    liContribuicao.append(spanContribuicao);
+    return liContribuicao;
+}
+
+const listarContribuicoes = () => {
+    let listaContribuicao = document.querySelector("#listaContribuicao");
+    listaContribuicao.innerHTML = '';
+    jogadores.forEach(element => {
+        if(element.valorColeta > 0) {
+            listaContribuicao.append(criarComponenteListaContribuicao(element));
+        }
+    });
+}
+
+const listarJogadoresSelectColeta = () => {
+    let selectJogadoresModal = document.querySelector('#jogadorColetaSelect');
+    
+    jogadores.forEach(element => {
+        var optionSelect = document.createElement('option');
+        optionSelect.value = element.id;
+        optionSelect.innerHTML = element.nick;
+        selectJogadoresModal.appendChild(optionSelect);
+    });
+}
+
+const salvarColeta = () => {
+    let jogadorColetaSelect = document.querySelector('#jogadorColetaSelect');
+    let valorInputColeta = document.querySelector('#valorInputColeta');
+    
+    const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorColetaSelect.value);
+    resultJogador[0].valorColeta = parseInt(resultJogador[0].valorColeta) + parseInt(valorInputColeta.value);
+    debugger
+    atualizarJogador(resultJogador[0]);
+    Swal.fire({
+        title: 'Coleta atualizada com sucesso',
+        icon: 'success',
+        confirmButtonText: 'ok'
+    });
+    listarContribuicoes();
+}
+
+btnRegistrarColeta.addEventListener('click', () => {
+    listarJogadoresSelectColeta();
+});
 
 const main = () => {
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
+        btnRegistrarColeta.style.display = usuarioLogado.id == '05gmdpZkRWhckcMOZssB' || usuarioLogado.id == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
         criarGraficoSkill();
+        listarContribuicoes();
     });
     sessaoTrocas.style.display = usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
     if(usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU') {
