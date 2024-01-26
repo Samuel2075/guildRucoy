@@ -19,7 +19,6 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarFixed">
             <div class="container px-lg-5 alignNav">
-                <p id="pontosH6" class="navH6"></p>
                 <p id="nickH6" class="navH6"></p>
                 <h6 class="navH6 levelGuild"><img src="assets/level-up.png" alt="" srcset=""><span id="levelGuild"></span></h6>
                 <a href="index.html" class="btn btn-primary">início</a>
@@ -60,35 +59,86 @@
             </div>
         </section>
 
+        <section class="pt-4" id="sessaoQuest" style="margin-bottom: 15px;">
+            <div class="container px-lg-5">
+                <div class="col-md-12">
+                    <h5>Registrar Quests</h5>
+                    <ul class="list-group" id="listaQuest">
+                        
+                    </ul>
+                    <button type="button" id="btnRegistrarQuest" class="btn btn-primary w-100 mt-3" data-toggle="modal"
+                    data-target="#modalQuest">
+                        Registrar quest
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <div class="modal fade" id="modalColeta" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Coleta</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-md-12">
-                                <label for="jogadorColetaSelect">Jogador</label>
-                                <select class="form-control" id="jogadorColetaSelect">
-                                    
-                                </select>
-                                <div class="form-group">
-                                    <label for="valorInputColeta">Valor</label>
-                                    <input type="text" class="form-control" id="valorInputColeta" placeholder="Valor">
-                                </div>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Coleta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <label for="jogadorColetaSelect">Jogador</label>
+                            <select class="form-control" id="jogadorColetaSelect">
+                                
+                            </select>
+                            <div class="form-group">
+                                <label for="valorInputColeta">Valor</label>
+                                <input type="text" class="form-control" id="valorInputColeta" placeholder="Valor">
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" onclick="salvarColeta()" class="btn btn-primary">Salvar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" onclick="salvarColeta()" class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="modal fade" id="modalQuest" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Cadastro Quest</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nomeInputCadastroQuest">Nome</label>
+                                <input type="text" class="form-control" id="nomeInputCadastroQuest" placeholder="Nome">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pontosInputCadastroQuest">Pontos</label>
+                                <input type="number" class="form-control" id="pontosInputCadastroQuest" placeholder="Pontos">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descricaoInputCadastroQuest">Descrição</label>
+                                <textarea class="form-control" id="descricaoInputCadastroQuest"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" onclick="cadastrarQuest()" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
      
         <!-- Footer-->
         <footer class="py-5 bg-dark">

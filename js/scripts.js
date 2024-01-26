@@ -103,7 +103,7 @@ const criarRankQuiz = () => {
 
 const criarRankX1 = () => {
     jogadores = jogadores.sort((a, b) => {
-        if (a.quiz > b.quiz) {
+        if (a.pvp > b.pvp) {
             return -1;
         }
     });

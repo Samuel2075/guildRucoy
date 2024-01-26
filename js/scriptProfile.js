@@ -12,12 +12,15 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 let jogadores = [];
+let quests = [];
 let trocas = [];
 let usuarioLogado = window.localStorage.getItem("usuarioLogado");
 let levelGuild = document.querySelector('#levelGuild');
 let listaTrocas = document.querySelector('#listaTrocas');
 let sessaoTrocas = document.querySelector('#sessaoTrocas');
 let btnRegistrarColeta = document.querySelector("#btnRegistrarColeta");
+let listaQuest = document.querySelector("#listaQuest");
+let sessaoQuest = document.querySelector("#sessaoQuest");
 
 const pegarTodosJogadores = async () => {
     await db.collection('jogadores').get().then(data =>{
@@ -25,6 +28,16 @@ const pegarTodosJogadores = async () => {
             const player = element.data();
             player.id = element.id;
             jogadores.push(player);
+        });
+    });
+}
+
+const pegarTodasQuests = async () => {
+    await db.collection('quests').get().then(data =>{
+        data.docs.forEach(element =>{
+            const quest = element.data();
+            quest.id = element.id;
+            quests.push(quest);
         });
     });
 }
@@ -37,6 +50,11 @@ const pegarTodasTrocas = async () => {
             trocas.push(troca);
         });
     });
+}
+
+const adicionarQuest = async (nome, ponto, descricao) => {
+    const questObj = {nome, ponto, descricao}
+    await db.collection('quests').add(questObj);
 }
 
 const deletarTroca = async (itemTroca) => {
@@ -98,7 +116,7 @@ const checarUsuarioLogado = () => {
     }
 }
 
-const criarElementoListaTroca = (itemTroca) => {
+const criarComponenteListaTroca = (itemTroca) => {
     let liLista = document.createElement('li');
     let btnItemEntregue = document.createElement('button');
     let stringNomeItem = itemTroca.item + "   /   " + itemTroca.jogador;
@@ -114,10 +132,36 @@ const criarElementoListaTroca = (itemTroca) => {
     return liLista;
 }
 
+const criarComponenteListaQuest = (questComponente) => {
+    let liLista = document.createElement('li');
+    let btnDeletarQuest = document.createElement('button');
+    let stringNomeQuest = questComponente.nome + "   /   " + questComponente.descricao + "   /   " + questComponente.ponto + " Pontos";
+    liLista.className = "list-group-item liListaTroca";
+    liLista.innerText = stringNomeQuest;
+    btnDeletarQuest.innerText = "Remover";
+    btnDeletarQuest.className = "btn btn-danger";
+    btnDeletarQuest.addEventListener('click', () => {
+        deletarQuest(questComponente);
+        listarQuests();
+    });
+    liLista.append(btnDeletarQuest);
+    return liLista;
+}
+
+const deletarQuest = (questComponente) => {
+    let questFiltro = quests.filter((quest) => quest.id == questComponente.id);
+    quests.forEach((element, index) => {
+        if(questFiltro[0].id == element.id) {
+            quests.splice(index, 1);
+        }
+    });
+    db.collection("quests").doc(questComponente.id).delete();
+}
+
 const preencherListaTrocas = () => {
     listaTrocas.innerHTML = '';
     trocas.forEach(element => {
-        listaTrocas.append(criarElementoListaTroca(element));
+        listaTrocas.append(criarComponenteListaTroca(element));
     });
 }
 
@@ -128,7 +172,6 @@ const preencherCampos = () => {
             totalPontosquestsPlayer = totalPontosquestsPlayer + element.ponto;
         });
     }
-    pontosH6.innerText = "Pontos Quests: " + totalPontosquestsPlayer;
     levelGuild.innerText = usuarioLogado.levelGuild;
     nickH6.innerText = usuarioLogado.nick;
 }
@@ -152,6 +195,13 @@ const listarContribuicoes = () => {
         if(element.valorColeta > 0) {
             listaContribuicao.append(criarComponenteListaContribuicao(element));
         }
+    });
+}
+
+const listarQuests = () => {
+    listaQuest.innerHTML = '';
+    quests.forEach(element => {
+        listaQuest.append(criarComponenteListaQuest(element));
     });
 }
 
@@ -186,10 +236,37 @@ btnRegistrarColeta.addEventListener('click', () => {
     listarJogadoresSelectColeta();
 });
 
+const cadastrarQuest = () => {
+    let nomeQuest = document.querySelector("#nomeInputCadastroQuest").value;
+    let pontosQuest = document.querySelector("#pontosInputCadastroQuest").value;
+    let descricaoQuest = document.querySelector("#descricaoInputCadastroQuest").value;
+    debugger
+    if(nomeQuest != "" && pontosQuest != "" && descricaoQuest != "") {
+        quests = [];
+        adicionarQuest(nomeQuest, parseInt(pontosQuest), descricaoQuest);
+        pegarTodasQuests().then(() => {
+            listarQuests();
+        });
+        Swal.fire({
+            title: 'Quest cadastrada com sucesso',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    } else {
+        Swal.fire({
+            title: 'Falha ao cadastrar a quest',
+            text: 'Todos os campos são obrigatórios, favor preenche-los!',
+            icon: 'error',
+            confirmButtonText: 'ok'
+        });
+    }
+}
+
 const main = () => {
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
         btnRegistrarColeta.style.display = usuarioLogado.id == '05gmdpZkRWhckcMOZssB' || usuarioLogado.id == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
+        sessaoQuest.style.display = usuarioLogado.levelGuild >= 3 ? 'block' : 'none'; 
         criarGraficoSkill();
         listarContribuicoes();
     });
@@ -199,6 +276,9 @@ const main = () => {
             preencherListaTrocas();
         });
     }
+    pegarTodasQuests().then(() => {
+        listarQuests();
+    });
 }
 
 main();
