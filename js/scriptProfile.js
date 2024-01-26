@@ -237,13 +237,13 @@ btnRegistrarColeta.addEventListener('click', () => {
 });
 
 const cadastrarQuest = () => {
-    let nomeQuest = document.querySelector("#nomeInputCadastroQuest").value;
-    let pontosQuest = document.querySelector("#pontosInputCadastroQuest").value;
-    let descricaoQuest = document.querySelector("#descricaoInputCadastroQuest").value;
-    debugger
-    if(nomeQuest != "" && pontosQuest != "" && descricaoQuest != "") {
+    let nomeQuest = document.querySelector("#nomeInputCadastroQuest");
+    let pontosQuest = document.querySelector("#pontosInputCadastroQuest");
+    let descricaoQuest = document.querySelector("#descricaoInputCadastroQuest");
+    
+    if(nomeQuest.value != "" && pontosQuest.value != "" && descricaoQuest.value != "") {
         quests = [];
-        adicionarQuest(nomeQuest, parseInt(pontosQuest), descricaoQuest);
+        adicionarQuest(nomeQuest.value, parseInt(pontosQuest.value), descricaoQuest.value);
         pegarTodasQuests().then(() => {
             listarQuests();
         });
@@ -252,6 +252,9 @@ const cadastrarQuest = () => {
             icon: 'success',
             confirmButtonText: 'ok'
         });
+        nomeQuest.value = "";
+        pontosQuest.value = "";
+        descricaoQuest.value = "";
     } else {
         Swal.fire({
             title: 'Falha ao cadastrar a quest',

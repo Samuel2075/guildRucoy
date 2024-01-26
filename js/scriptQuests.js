@@ -22,7 +22,7 @@ let totalPontosquestsPlayer = 0;
 let xpGuildDivProgress = document.createElement('div');
 
 const pegarTodasQuests = async () => {
-    await db.collection('quests').get().then(data =>{
+    await db.collection('questsSemana').get().then(data =>{
         data.docs.forEach(element =>{
             const quest = element.data();
             quest.id = element.id;
