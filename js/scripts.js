@@ -21,6 +21,7 @@ let btnLogin = document.querySelector("#btnLogin");
 let pontosH6 = document.querySelector("#pontosH6");
 let nickH6 = document.querySelector("#nickH6");
 let questBtn = document.querySelector("#questBtn");
+let linkProfile = document.querySelector("#linkProfile");
 
 let itens = [];
 
@@ -334,6 +335,7 @@ const efetuarLogin = () => {
                 icon: 'success',
                 confirmButtonText: 'ok'
             });
+            linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
         }    
     }
 }
@@ -366,6 +368,7 @@ const preencherCampos = () => {
 }
 
 const main = () => {  
+    linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
     });

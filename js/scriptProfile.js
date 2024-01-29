@@ -99,6 +99,8 @@ const criarGraficoSkill = () => {
 }
 
 const checarUsuarioLogado = () => {
+    debugger
+
     if(usuarioLogado != null) {
         let jogadorFiltroLogado = jogadores.filter((jogador) => jogador.id == usuarioLogado);
         if(jogadorFiltroLogado.length == 0) {
@@ -113,6 +115,8 @@ const checarUsuarioLogado = () => {
             usuarioLogado = jogadorFiltroLogado[0];
             preencherCampos();
         }
+    } else {
+        window.location = "https://sociedaderevolucionaria.netlify.app/";
     }
 }
 
