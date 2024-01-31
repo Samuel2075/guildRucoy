@@ -146,11 +146,17 @@ const finalizarQuest = (quest) => {
             });
             usuarioLogado.totalPontosQuests = usuarioLogado.totalPontosQuests + quest.ponto;
             if(usuarioLogado.totalPontosQuests == pontosTotalTodasQuests) {
+                let mensagemLevelUp = "";
                 usuarioLogado.levelGuild++;
                 levelGuild.innerText = levelGuild;
+                if(usuarioLogado.levelGuild == 3) {
+                    mensagemLevelUp = "Parabéns você chegou ao nivel 3! Agora se entrar no seu perfil poderá gerenciar as quests.Use isso com sabedoria, com grandes poderes vem grandes responsabilidades." 
+                } else {
+                    mensagemLevelUp = "Parabéns você passou de level.";
+                }
                 Swal.fire({
                     title: 'Level Up!',
-                    text: "Parabéns você passou de level.",
+                    text: mensagemLevelUp,
                     icon: 'success',
                     confirmButtonText: 'ok'
                 });
