@@ -22,6 +22,7 @@ let pontosH6 = document.querySelector("#pontosH6");
 let nickH6 = document.querySelector("#nickH6");
 let questBtn = document.querySelector("#questBtn");
 let linkProfile = document.querySelector("#linkProfile");
+let skills = document.querySelector("#skills");
 
 let itens = [];
 
@@ -336,6 +337,7 @@ const efetuarLogin = () => {
                 confirmButtonText: 'ok'
             });
             linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
+            skills.style.display = 'inline';
         }    
     }
 }
@@ -355,10 +357,11 @@ const checarUsuarioLogado = () => {
             usuarioLogado = jogadorFiltroLogado[0];
             btnLogin.style.display = 'none';
             preencherCampos();
+            skills.style.display = 'inline';
         }
-        questBtn.style.display = 'inline';
     } else {
         questBtn.style.display = 'none';
+        skills.style.display = 'none';
     }
 }
 
