@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociedade Revolucionária</title>
+        <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="css/styleQuest.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarFixed">
+        <div class="container px-lg-5 alignNav">
+            <h6 id="nickH6" class="navH6"></h6>
+            <h6 class="navH6 levelGuild"><img src="assets/level-up.png" alt="" srcset=""><span id="levelGuild"></span></h6>
+            <h6 id="pontosH6" class="navH6"></h6>
+            <h6 id="pontosAtributos" class="navH6"></h6>
+            <a href="index.html" class="btn btn-primary">início</a>
+        </div>
+    </nav>
+    <section class="pt-5" id="suaCriaturaSessao">
+        <div class="container">
+            <h3 class="cardCriatura">Sua Criatura</h3>
+            <div class="row criaturaPrincipal">
+                <div class="col-md-4 criaturaPrincipal mt-3">
+                    <div class="card" style="width: 15rem;">
+                        <img id="criaturaPrincipalImg" class="card-img-top" src="" alt="Card image cap">
+                    </div>
+                </div>
+                <div class="col-md-8 mt-3">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" id="nomeCriaturaJogador">
+                            
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Level
+                            <span class="badge badge-primary badge-pill" style="background-color: blue;" id="levelCriaturaJogador"></span>
+                          </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Ataque
+                          <button type="button" id="btnMenos" class="btn btn-dark btnMenos" onclick="subtrairAtributo('ataqueCriaturaJogador', 'ataque')">-</button>
+                          <span class="badge badge-primary badge-pill" style="background-color: blue;padding: 5px;" id="ataqueCriaturaJogador"></span>
+                          <button type="button" id="btnMaisAtaque" class="btn btn-dark btnMais" onclick="somarAtributo('ataqueCriaturaJogador', 'ataque')">+</button>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Magia
+                          <button type="button" id="btnMenos" class="btn btn-dark btnMenos" onclick="subtrairAtributo('magiaCriaturaJogador', 'magia')">-</button>
+                          <span class="badge badge-primary badge-pill" style="background-color: blue;padding: 5px;" id="magiaCriaturaJogador"></span>
+                          <button type="button" id="btnMaisMagia" class="btn btn-dark btnMais" onclick="somarAtributo('magiaCriaturaJogador', 'magia')">+</button>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Defesa
+                          <button type="button" id="btnMenos" class="btn btn-dark btnMenos" onclick="subtrairAtributo('defesaCriaturaJogador', 'defesa')">-</button>
+                          <span class="badge badge-primary badge-pill" style="background-color: blue;padding: 5px;" id="defesaCriaturaJogador"></span>
+                          <button type="button" id="btnMaisDefesa" class="btn btn-dark btnMais" onclick="somarAtributo('defesaCriaturaJogador', 'defesa')">+</button>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Vida
+                          <button type="button" id="btnMenos" class="btn btn-dark btnMenos" onclick="subtrairAtributo('vidaCriaturaJogador', 'vida')">-</button>
+                          <span class="badge badge-primary badge-pill" style="background-color: blue;padding: 5px;" id="vidaCriaturaJogador"></span>
+                          <button type="button" id="btnMaisVida" class="btn btn-dark btnMais" onclick="somarAtributo('vidaCriaturaJogador', 'vida')">+</button>
+                        </li>
+                      </ul>
+                      <button type="button" id="btnMaisAtaque" class="btn btn-dark btnMais mt-3 mr-0" onclick="atualizarAtributo()">Atualizar Atributos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pt-5">
+        <div class="container">
+            <h3 class="cardCriatura">Suas de criaturas</h3>
+            <div class="row criaturaPrincipal" id="suasCriaturas">
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="pt-5">
+        <div class="container">
+            <h3 class="cardCriatura">Loja de criaturas</h3>
+            <div class="row criaturaPrincipal" id="criaturaPrincipal">
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <div class="modal fade bd-example-modal-sm" id="modalAtributos" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content" id="conteudoModalInformacao">
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Level
+                <span class="badge badge-primary badge-pill" style="background-color: blue;" id="level"></span>
+              </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Ataque
+                  <span class="badge badge-primary badge-pill" style="background-color: blue;" id="ataque"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Magia
+                  <span class="badge badge-primary badge-pill" style="background-color: blue;" id="magia"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Defesa
+                  <span class="badge badge-primary badge-pill" style="background-color: blue;" id="defesa"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Vida
+                  <span class="badge badge-primary badge-pill" style="background-color: blue;" id="vida"></span>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Guild Sociedade Revolucionária 2024</p></div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src="https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/scriptCriaturas.js"></script>
+</body>
+</html>

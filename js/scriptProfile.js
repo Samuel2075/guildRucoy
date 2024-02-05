@@ -14,10 +14,14 @@ const db = firebase.firestore();
 let jogadores = [];
 let quests = [];
 let trocas = [];
+let eventos = [];
+let eventoVencedores = [];
 let usuarioLogado = window.localStorage.getItem("usuarioLogado");
 let levelGuild = document.querySelector('#levelGuild');
 let listaTrocas = document.querySelector('#listaTrocas');
 let sessaoTrocas = document.querySelector('#sessaoTrocas');
+let sessaoEventos = document.querySelector('#sessaoEventos');
+let sessaoVencedores = document.querySelector('#sessaoVencedores');
 let btnRegistrarColeta = document.querySelector("#btnRegistrarColeta");
 let listaQuest = document.querySelector("#listaQuest");
 let sessaoQuest = document.querySelector("#sessaoQuest");
@@ -42,6 +46,28 @@ const pegarTodasQuests = async () => {
     });
 }
 
+const pegarTodosEventos = async () => {
+    eventos = [];
+    await db.collection('eventos').get().then(data =>{
+        data.docs.forEach(element =>{
+            const evento = element.data();
+            evento.id = element.id;
+            eventos.push(evento);
+        });
+    });
+}
+
+const pegarTodosVencedoresEventos = async () => {
+    eventoVencedores = [];
+    await db.collection('eventoVencedores').get().then(data =>{
+        data.docs.forEach(element =>{
+            const eventoVencedor = element.data();
+            eventoVencedor.id = element.id;
+            eventoVencedores.push(eventoVencedor);
+        });
+    });
+}
+
 const pegarTodasTrocas = async () => {
     await db.collection('trocas').get().then(data =>{
         data.docs.forEach(element =>{
@@ -55,6 +81,16 @@ const pegarTodasTrocas = async () => {
 const adicionarQuest = async (nome, ponto, descricao) => {
     const questObj = {nome, ponto, descricao}
     await db.collection('quests').add(questObj);
+}
+
+const adicionarEvento = async (nome, ponto) => {
+    const eventoObj = {nome, ponto}
+    await db.collection('eventos').add(eventoObj);
+}
+
+const adicionarEventoVencedor = async (evento, jogador) => {
+    const evntoVencedorObj = {evento, jogador}
+    await db.collection('eventoVencedores').add(evntoVencedorObj);
 }
 
 const deletarTroca = async (itemTroca) => {
@@ -99,8 +135,6 @@ const criarGraficoSkill = () => {
 }
 
 const checarUsuarioLogado = () => {
-    debugger
-
     if(usuarioLogado != null) {
         let jogadorFiltroLogado = jogadores.filter((jogador) => jogador.id == usuarioLogado);
         if(jogadorFiltroLogado.length == 0) {
@@ -192,6 +226,20 @@ const criarComponenteListaContribuicao = (jogador) => {
     return liContribuicao;
 }
 
+const criarComponenteListaEventos = (evento) => {
+    var liEvento = document.createElement('li');
+    liEvento.className = "list-group-item d-flex justify-content-between align-items-center";
+    liEvento.innerText = evento.nome + "  /  " + evento.ponto;
+    return liEvento;
+}
+
+const criarComponenteListaEventosVencedores = (evento) => {
+    var liEvento = document.createElement('li');
+    liEvento.className = "list-group-item d-flex justify-content-between align-items-center";
+    liEvento.innerText = evento.evento + "  /  " + evento.jogador;
+    return liEvento;
+}
+
 const listarContribuicoes = () => {
     let listaContribuicao = document.querySelector("#listaContribuicao");
     listaContribuicao.innerHTML = '';
@@ -199,6 +247,45 @@ const listarContribuicoes = () => {
         if(element.valorColeta > 0) {
             listaContribuicao.append(criarComponenteListaContribuicao(element));
         }
+    });
+}
+
+const listaEventos = () => {
+    let listaEventos = document.querySelector("#listaEventos");
+    listaEventos.innerHTML = '';
+    eventos.forEach(element => {
+        listaEventos.append(criarComponenteListaEventos(element));
+    });
+}
+
+const listaEventosVencedores = () => {
+    let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
+    listaEventosVencedor.innerHTML = '';
+    eventoVencedores.forEach(element => {
+        listaEventosVencedor.append(criarComponenteListaEventosVencedores(element));
+    });
+}
+
+const listarJogadorEventoVencedorSelect = () => {
+    let jogadorEventoSelectVencedor = document.querySelector('#jogadorEventoSelectVencedor');
+    jogadorEventoSelectVencedor.innerHTML = '';
+    jogadores.forEach(element => {
+        var optionSelect = document.createElement('option');
+        optionSelect.value = element.id;
+        optionSelect.innerHTML = element.nick;
+        jogadorEventoSelectVencedor.appendChild(optionSelect);
+    });
+}
+
+const listarEventosEventoVencedorSelect = () => {
+    let eventoSelectVencedor = document.querySelector('#eventoSelectVencedor');
+    eventoSelectVencedor.innerHTML = '';
+    
+    eventos.forEach(element => {
+        var optionSelect = document.createElement('option');
+        optionSelect.value = element.id;
+        optionSelect.innerHTML = element.nome;
+        eventoSelectVencedor.appendChild(optionSelect);
     });
 }
 
@@ -226,7 +313,6 @@ const salvarColeta = () => {
     
     const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorColetaSelect.value);
     resultJogador[0].valorColeta = parseInt(resultJogador[0].valorColeta) + parseInt(valorInputColeta.value);
-    debugger
     atualizarJogador(resultJogador[0]);
     Swal.fire({
         title: 'Coleta atualizada com sucesso',
@@ -234,6 +320,65 @@ const salvarColeta = () => {
         confirmButtonText: 'ok'
     });
     listarContribuicoes();
+}
+
+const registrarEventoVencedor = () => {
+    $('#modalEventoVencedor').modal();
+    listarJogadorEventoVencedorSelect();
+    listarEventosEventoVencedorSelect();
+}
+
+const salvarEventoVencedor = () => {
+    let eventoSelectVencedor = document.querySelector('#eventoSelectVencedor');
+    let jogadorEventoSelectVencedor = document.querySelector('#jogadorEventoSelectVencedor');
+    const resultEvento = eventos.filter((evento) => evento.id == eventoSelectVencedor.value);
+    const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorEventoSelectVencedor.value);
+    if(resultEvento[0].nome == "Quiz") {
+        usuarioLogado.quiz = usuarioLogado.quiz + resultEvento[0].ponto;
+        adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
+        atualizarJogador(usuarioLogado);
+        Swal.fire({
+            title: 'Vencedor registrado com sucesso!',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    } else if(resultEvento[0].nome == "Esconde-esconde") {
+        usuarioLogado.escondeEsconde = usuarioLogado.escondeEsconde + resultEvento[0].ponto;
+        adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
+        atualizarJogador(usuarioLogado);
+        Swal.fire({
+            title: 'Vencedor registrado com sucesso!',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    } else if(resultEvento[0].nome == "Batalha de criaturas") {
+        Swal.fire({
+            title: 'Batalha',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    } else {
+        Swal.fire({
+            title: 'Em implementação',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    }
+}
+
+const salvarEvento = () => {
+    let nomeInputPontoEvento = document.querySelector('#nomeInputPontoEvento');
+    let valorInputPontoEvento = document.querySelector('#valorInputPontoEvento');    
+
+    adicionarEvento(nomeInputPontoEvento.value, parseInt(valorInputPontoEvento.value));
+    Swal.fire({
+        title: 'Coleta atualizada com sucesso',
+        icon: 'success',
+        confirmButtonText: 'ok'
+    });
+    pegarTodosEventos().then(() => {
+        listaEventos();
+    });
 }
 
 btnRegistrarColeta.addEventListener('click', () => {
@@ -269,6 +414,11 @@ const cadastrarQuest = () => {
     }
 }
 
+const registrarVencedor = () => {
+    $('#modalEventoVencedor').modal();
+
+}
+
 const main = () => {
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
@@ -277,7 +427,10 @@ const main = () => {
         criarGraficoSkill();
         listarContribuicoes();
     });
-    sessaoTrocas.style.display = usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
+    sessaoTrocas.style.display = usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none';
+    sessaoEventos.style.display = usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
+    sessaoVencedores.style.display = usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
+
     if(usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU') {
         pegarTodasTrocas().then(() => {
             preencherListaTrocas();
@@ -285,6 +438,12 @@ const main = () => {
     }
     pegarTodasQuests().then(() => {
         listarQuests();
+    });
+    pegarTodosEventos().then(() => {
+        listaEventos();
+    });
+    pegarTodosVencedoresEventos().then(() => {
+        listaEventosVencedores();
     });
 }
 
