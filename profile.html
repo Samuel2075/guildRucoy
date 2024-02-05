@@ -74,6 +74,35 @@
             </div>
         </section>
 
+        <section class="pt-4" style="margin-bottom: 15px;" id="sessaoEventos">
+            <div class="container px-lg-5">
+                <div class="col-md-12">
+                    <h5>Eventos</h5>
+                    <ul class="list-group" id="listaEventos">
+                        
+                    </ul>
+                    <button type="button" id="btnRegistrarEvento" class="btn btn-primary w-100 mt-3" data-toggle="modal"
+                    data-target="#modalEvento">
+                        Registrar Evento
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-4" style="margin-bottom: 15px;" id="sessaoVencedores">
+            <div class="container px-lg-5">
+                <div class="col-md-12">
+                    <h5>Vencedores</h5>
+                    <ul class="list-group" id="listaEventosVencedor">
+                        
+                    </ul>
+                    <button type="button" id="btnRegistrarEvento" class="btn btn-primary w-100 mt-3" onclick="registrarEventoVencedor()">
+                        Registrar vencedor
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <div class="modal fade" id="modalColeta" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -135,6 +164,64 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="button" onclick="cadastrarQuest()" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Registrar Evento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="nomeInputPontoEvento">Nome</label>
+                                <input type="text" class="form-control" id="nomeInputPontoEvento" placeholder="Nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="valorInputPontoEvento">Ponto</label>
+                                <input type="number" class="form-control" id="valorInputPontoEvento" placeholder="Ponto">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" onclick="salvarEvento()" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalEventoVencedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Registrar jogador vencedor</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <label for="jogadorEventoSelectVencedor">Jogador</label>
+                            <select class="form-control" id="jogadorEventoSelectVencedor">
+                                
+                            </select>
+                            <label for="eventoSelectVencedor">Evento</label>
+                            <select class="form-control" id="eventoSelectVencedor">
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" onclick="salvarEventoVencedor()" class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
             </div>

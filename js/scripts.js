@@ -23,6 +23,7 @@ let nickH6 = document.querySelector("#nickH6");
 let questBtn = document.querySelector("#questBtn");
 let linkProfile = document.querySelector("#linkProfile");
 let skills = document.querySelector("#skills");
+let criaturas = document.querySelector("#criaturas");
 
 let itens = [];
 
@@ -372,8 +373,10 @@ const preencherCampos = () => {
 
 const main = () => {  
     linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
+    
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
+        criaturas.style.display = usuarioLogado != null && usuarioLogado.level >= 3 ? 'inline' : 'none';
     });
     pegarTodosItens().then(() => {
         itens.forEach(element => {

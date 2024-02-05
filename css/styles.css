@@ -84,6 +84,15 @@
   justify-content: end;
 }
 
+.btnMais{
+  position: absolute;
+    right: 50px;
+}
+
+.btnMenos {
+  position: absolute;
+  right: 90px;
+}
 .profile {
   width: 50px;
   padding: 5px;
@@ -128,6 +137,26 @@
   color: white;
   margin: 0;
   font-size: 15px;
+}
+
+.criaturaPrincipal {
+  display: flex !important;
+  justify-content: center;
+}
+
+.cardCriatura {
+  margin-top: 50px!important;
+  text-align: center;
+}
+
+.btnPopUp {
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  font-size: 14px!important;
+  margin: 0;
+  padding: 6px!important;
+  border-radius: 15px!important;
 }
 
 .liListaTroca {

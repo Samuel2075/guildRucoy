@@ -145,21 +145,42 @@ const finalizarQuest = (quest) => {
                 confirmButtonText: 'ok'
             });
             usuarioLogado.totalPontosQuests = usuarioLogado.totalPontosQuests + quest.ponto;
-            if(usuarioLogado.totalPontosQuests == pontosTotalTodasQuests) {
-                let mensagemLevelUp = "";
+            usuarioLogado.xpQuest = usuarioLogado.xpQuest + quest.ponto;
+            if(usuarioLogado.xpQuest == pontosTotalTodasQuests) {
                 usuarioLogado.levelGuild++;
+                usuarioLogado.criaturas = [];
                 levelGuild.innerText = levelGuild;
                 if(usuarioLogado.levelGuild == 3) {
-                    mensagemLevelUp = "Parabéns você chegou ao nivel 3! Agora se entrar no seu perfil poderá gerenciar as quests.Use isso com sabedoria, com grandes poderes vem grandes responsabilidades." 
+                    usuarioLogado.pontosAtributos = 5;
+                    Swal.fire({
+                        title: "<strong>HTML <u>example</u></strong>",
+                        icon: "info",
+                        html: `
+                        Parabéns você chegou ao nivel 3!</b>Agora algumas funções novas foram liberadas para você.</br>
+                        Lista de funções desbloqueadas:
+                        <ol>
+                            <li><a href="https://sociedaderevolucionaria.netlify.app/profile">Gerenciar Quests</a></li>
+                            <li><a href="https://sociedaderevolucionaria.netlify.app/criaturas">Modo criatura</a></li>
+                        </ol></br>
+                        Acesse os links acima e veja o que há de novo.
+                        `
+                      });
+                } else if(usuarioLogado.levelGuild > 3){
+                    usuarioLogado.pontosAtributos = usuarioLogado.pontosAtributos + 5;
+                    Swal.fire({
+                        title: 'Level Up!',
+                        text: "Parabéns você passou de level! Avise o ADM para pegar os seus dimas e lembre que ganhou pontos de atributos para suas criaturas.",
+                        icon: 'success',
+                        confirmButtonText: 'ok'
+                    });
                 } else {
-                    mensagemLevelUp = "Parabéns você passou de level.";
+                    Swal.fire({
+                        title: 'Level Up!',
+                        text: "Parabéns você passou de level! Avise o ADM para pegar os seus dimas",
+                        icon: 'success',
+                        confirmButtonText: 'ok'
+                    });
                 }
-                Swal.fire({
-                    title: 'Level Up!',
-                    text: mensagemLevelUp,
-                    icon: 'success',
-                    confirmButtonText: 'ok'
-                });
                 cadastrarJogadorLevelUp(usuarioLogado);
             }
             preencherCampos();
