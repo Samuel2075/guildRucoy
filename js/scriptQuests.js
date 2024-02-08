@@ -22,8 +22,8 @@ let totalPontosquestsPlayer = 0;
 let xpGuildDivProgress = document.createElement('div');
 
 const pegarTodasQuests = async () => {
-    await db.collection('questsSemana').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('questsSemana').get().then(data => {
+        data.docs.forEach(element => {
             const quest = element.data();
             quest.id = element.id;
             quests.push(quest);
@@ -32,8 +32,8 @@ const pegarTodasQuests = async () => {
 }
 
 const pegarTodosJogadores = async () => {
-    await db.collection('jogadores').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('jogadores').get().then(data => {
+        data.docs.forEach(element => {
             const player = element.data();
             player.id = element.id;
             jogadores.push(player);
@@ -72,7 +72,7 @@ const criarComponenteListaQuest = (index, quest) => {
     btnTitulo.innerText = quest.nome;
     h6Pontos.className = 'pontosTexto';
     h6Pontos.innerText = 'Pontos: ' + quest.ponto;
-    if(verificarQuestConcluida(quest)) {
+    if (verificarQuestConcluida(quest)) {
         btnConcluir.className = 'btn btn-danger';
         btnConcluir.innerText = 'Quest Finalizada';
     } else {
@@ -104,9 +104,9 @@ const criarComponenteListaQuest = (index, quest) => {
 }
 
 const checarUsuarioLogado = () => {
-    if(usuarioLogado != null) {
+    if (usuarioLogado != null) {
         let jogadorFiltroLogado = jogadores.filter((jogador) => jogador.id == usuarioLogado);
-        if(jogadorFiltroLogado.length == 0) {
+        if (jogadorFiltroLogado.length == 0) {
             Swal.fire({
                 title: 'Falha recuperar usuário',
                 text: 'Usuário logado não existe!',
@@ -130,10 +130,10 @@ const finalizarQuest = (quest) => {
         confirmButtonText: 'Sim',
         denyButtonText: 'Não',
         customClass: {
-          actions: 'my-actions',
-          cancelButton: 'order-1 right-gap',
-          confirmButton: 'order-2',
-          denyButton: 'order-3',
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
         },
     }).then((result) => {
         if (result.isConfirmed) {
@@ -146,11 +146,11 @@ const finalizarQuest = (quest) => {
             });
             usuarioLogado.totalPontosQuests = usuarioLogado.totalPontosQuests + quest.ponto;
             usuarioLogado.xpQuest = usuarioLogado.xpQuest + quest.ponto;
-            if(usuarioLogado.xpQuest == pontosTotalTodasQuests) {
+            if (usuarioLogado.xpQuest == pontosTotalTodasQuests) {
                 usuarioLogado.levelGuild++;
                 usuarioLogado.criaturas = [];
                 levelGuild.innerText = levelGuild;
-                if(usuarioLogado.levelGuild == 3) {
+                if (usuarioLogado.levelGuild == 3) {
                     usuarioLogado.pontosAtributos = 5;
                     Swal.fire({
                         title: "<strong>HTML <u>example</u></strong>",
@@ -164,8 +164,8 @@ const finalizarQuest = (quest) => {
                         </ol></br>
                         Acesse os links acima e veja o que há de novo.
                         `
-                      });
-                } else if(usuarioLogado.levelGuild > 3){
+                    });
+                } else if (usuarioLogado.levelGuild > 3) {
                     usuarioLogado.pontosAtributos = usuarioLogado.pontosAtributos + 5;
                     Swal.fire({
                         title: 'Level Up!',
@@ -188,7 +188,7 @@ const finalizarQuest = (quest) => {
             listarTodasQuests();
             atualizarBarraProgressoLevel();
             atualizarJogador(usuarioLogado.id, usuarioLogado);
-        } 
+        }
     })
 }
 
@@ -199,7 +199,7 @@ const verificarQuestConcluida = (questParam) => {
 
 const preencherCampos = () => {
     totalPontosquestsPlayer = 0;
-    if(usuarioLogado.questsFinalizadas.length > 0) {
+    if (usuarioLogado.questsFinalizadas.length > 0) {
         usuarioLogado.questsFinalizadas.forEach(element => {
             totalPontosquestsPlayer = totalPontosquestsPlayer + element.ponto;
         });
@@ -211,7 +211,7 @@ const preencherCampos = () => {
 
 const porcentagemProgress = (questsPlayerPonto, pontosTodasQuests) => {
     return (100 * questsPlayerPonto) / pontosTodasQuests;
-} 
+}
 
 const listarTodasQuests = () => {
     pontosTotalTodasQuests = 0;
@@ -235,26 +235,26 @@ const criarGraficoSkill = () => {
     const ctx = document.getElementById('graficoSkill');
 
     new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Level', 'Melee', 'Dist', 'Magic', 'Defence'],
-        datasets: [{
-        label: 'Skills',
-        data: [usuarioLogado.level, usuarioLogado.melee, usuarioLogado.distance, usuarioLogado.magic, usuarioLogado.defence],
-        borderWidth: 1
-        }]
-    },
-    options: {
-        animation: false,
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            enabled: true
-          }
-        }
-      },
+        type: 'bar',
+        data: {
+            labels: ['Level', 'Melee', 'Dist', 'Magic', 'Defence'],
+            datasets: [{
+                label: 'Skills',
+                data: [usuarioLogado.level, usuarioLogado.melee, usuarioLogado.distance, usuarioLogado.magic, usuarioLogado.defence],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            animation: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        },
     });
 }
 
