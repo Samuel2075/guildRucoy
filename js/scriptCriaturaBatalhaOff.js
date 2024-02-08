@@ -346,7 +346,7 @@ const main = () => {
             preencherCamposInimigos();
         });
     } else {
-        window.location = "https://sociedaderevolucionaria.netlify.app/";
+        // window.localStorage.setItem("inimigo", cria);
     }
 }
 
