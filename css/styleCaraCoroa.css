@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --primary-color: #fff;
+  --font: 'Press Start 2P', cursive;
+}
+
+body {
+  background-image: url('../assets/img/bgs/imagemFundoBatalha.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: var(--font);
+  color: var(--primary-color);
+  font-size: 16px;
+}
+
+@media screen and (max-width: 520px) {
+  body {
+    background-image: url('../assets/img/bgs/mobImagemFundoBatalha.jpg'); 
+
+  }
+}
+
+button:hover {
+  transform: translateY(2px);
+  box-shadow: inset 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+  background: red;
+}
+
+.resultado {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #041833;
+}
+
+#boardGame {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  margin: 2rem 0rem;
+  transform-style: preserve-3d;
+}
+
+#boardGame div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  background-size: contain;
+  position: absolute;
+}
+
+#cara {
+  background-image: url('../assets/img/caraCoroa/png-transparent-super-mario-land-2-6-golden-coins-new-super-mario-bros-super-mario-bros-2-nintendo-a-nintendo-gold-coin-nintendo-video-game-thumbnail.png');
+}
+
+#coroa {
+  background-image: url('../assets/img/caraCoroa/png-transparent-super-mario-land-2-6-golden-coins-mario-bros-mario-yoshi-new-super-mario-bros-mario-bros.png');
+  transform: rotateY(-180deg);
+  background-position: center;
+}
+
+.animate-cara {
+  animation: girarCara 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes girarCara {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(1800deg);
+  }
+}
+
+.animate-coroa {
+  animation: girarCoroa 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes girarCoroa {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(1620deg);
+  }
+}

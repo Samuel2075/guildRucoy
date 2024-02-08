@@ -337,6 +337,7 @@ const efetuarLogin = () => {
                 icon: 'success',
                 confirmButtonText: 'ok'
             });
+            criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
             linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
             skills.style.display = 'inline';
         }    
@@ -376,7 +377,7 @@ const main = () => {
     
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
-        criaturas.style.display = usuarioLogado != null && usuarioLogado.level >= 3 ? 'inline' : 'none';
+        criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
     });
     pegarTodosItens().then(() => {
         itens.forEach(element => {

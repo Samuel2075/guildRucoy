@@ -1,0 +1,21 @@
+.alinharCard {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alinharComponentesCriaturas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alinharContainer {
+    height: 100vh!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: space-evenly!important;
+}
+
+.bg-blue {
+    background-color: blue;
+}

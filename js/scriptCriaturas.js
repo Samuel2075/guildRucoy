@@ -222,6 +222,7 @@ const criarComponenteSuasCriatura = (criatura, index) => {
         selecionarCriatura(criatura, index);
         preencherAttrCriaturaPrincipal();
         listarSuasCriaturas();
+        atualizarJogador(usuarioLogado);
     });
     divCard.append(h6Nome);
     divCard.append(h6Nome);
@@ -309,6 +310,13 @@ const atualizarAtributo = () => {
         icon: 'success',
         confirmButtonText: 'ok'
     });
+}
+
+const treinarCriatura = () => {
+    let criaturaPrincipal = usuarioLogado.criaturas[0];
+    let valorTotalStatusSuaCriatura = criaturaPrincipal.magia + criaturaPrincipal.ataque + criaturaPrincipal.defesa + criaturaPrincipal.vida;
+    // valorTotalStatusSuaCriatura = Math.round(valorTotalStatusSuaCriatura * 1.5);
+
 }
 
 const subtrairAtributo = (idBtn, attr) => {
