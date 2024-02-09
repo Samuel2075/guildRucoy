@@ -338,7 +338,7 @@ const efetuarLogin = () => {
                 confirmButtonText: 'ok'
             });
             criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
-            linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
+            linkProfile.style.display = 'block';
             skills.style.display = 'inline';
         }    
     }
