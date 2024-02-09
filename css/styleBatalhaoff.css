@@ -16,6 +16,61 @@
     justify-content: space-evenly!important;
 }
 
+#spanLevelCriatura {
+    z-index: 1;
+    color: #420c19;
+    font-size: 12px;
+}
+
+.bodyTopo {
+    display: grid;
+}
+
+.bodyBaixo {
+    display: grid;
+}
+
+.grid1, .grid2 {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.coluna1Topo, .coluna2Topo {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-top: 25px;
+}
+
+.coluna1Baixo, .coluna2Baixo {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.baseline {
+    align-items: baseline;
+}
+
+.imagemCriatura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.imgLevel {
+    z-index: 1;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+}
+
+.bodyCard {
+    width: 202px;
+    display: grid;
+}
+
 .bg-blue {
     background-color: blue;
 }
@@ -23,7 +78,7 @@
 .scene {
     width: 100%;
     height: 260px;
-    border: 1px solid #CCC;
+    border: none;
     margin: 40px 0;
     perspective: 600px;
   }
@@ -36,6 +91,8 @@
     transform-style: preserve-3d;
     transform-origin: center right;
     transition: transform 1s;
+    border: none !important;
+    --bs-card-bg: none !important;
   }
   
   .card.is-flipped {
@@ -50,14 +107,18 @@
     text-align: center;
     font-weight: bold;
     backface-visibility: hidden;
-  }
-  
-  .card__face--front {
-    background: #890e0e;
+    display: flex;
+    justify-content: center;
   }
   
   .card__face--back {
-    background: #890e0e;
     transform: rotateY(180deg);
   }
+  
+  .card-img-top {
+    width: 120px;
+    height: fit-content;
+    position: absolute;
+  }
+  
   

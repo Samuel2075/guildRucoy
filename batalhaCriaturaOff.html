@@ -20,8 +20,141 @@
 <body>
     <section style="height: 100vh;" id="batalhaSessao">
         <div class="container alinharContainer">
-            <div class="row">
-                <h6 style="text-align: center;">Batalha de treino</h6>
+            <div class="row" style="display: flex;justify-content: center;">
+                <div class="col-md-6 alinharComponentesCriaturas">
+                    <div class="scene scene--card">
+                        <div class="card" id="cardSuaCriatura">
+                            <div class="card__face">
+                                <img class="card-img-top" src="assets/img/carta/frente.png"
+                                    style="width: max-content;height: inherit;" alt="Card image cap">
+                                <div class="bodyCard">
+                                    <div class="bodyTopo">
+                                        <div class="grid1">
+                                            <div class="coluna1Topo baseline">
+                                                <span id="spanLevelCriatura"
+                                                    style="padding-left: 30px;position: absolute;">5</span>
+                                                <img class="imgLevel" style="position: absolute;"
+                                                    src="assets/icons/level.png" alt="" srcset="">
+                                            </div>
+                                        </div>
+                                        <div class="grid2">
+                                            <div class="coluna1Topo">
+                                                <img class="imgLevel" src="assets/icons/ataque.png" alt="" srcset="">
+                                                <span id="spanLevelCriatura">5</span>
+                                            </div>
+                                            <div class="coluna2Topo">
+                                                <div class="coluna1Topo baseline">
+                                                    <span id="spanLevelCriatura">5</span>
+                                                    <img class="imgLevel" src="assets/icons/defesa.png" alt=""
+                                                        srcset="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="imagemCriatura">
+                                        <img class="card-img-top" id="imgCriatura" alt="Card image cap">
+                                    </div>
+                                    <div class="bodyBaixo">
+                                        <div class="grid1">
+                                            <div class="coluna1Baixo baseline">
+                                                <div class="coluna1Baixo baseline">
+                                                    <img class="imgLevel" src="assets/icons/magia.png" alt="" srcset="">
+                                                    <span id="spanLevelCriatura">5</span>
+                                                </div>
+                                            </div>
+                                            <div class="coluna2Baixo">
+                                                <div class="coluna1Baixo baseline">
+                                                    <span id="spanLevelCriatura">5</span>
+                                                    <img class="imgLevel" src="assets/icons/vida.png" alt="" srcset="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid2">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card__face card__face--back"
+                                style="display: flex;align-items: center;justify-content: center;">
+                                <img src="assets/img/carta/verso.png"
+                                    style="width: max-content;height: inherit;" alt="Card image cap">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 alinharComponentesCriaturas">
+                    <div class="scene scene--card">
+                        <div class="card" id="cardCriaturaInimigo">
+                            <div class="card__face">
+                                <img class="card-img-top" src="assets/img/carta/frente.png"
+                                    style="width: max-content;height: inherit;" alt="Card image cap">
+                                <div class="bodyCard">
+                                    <div class="bodyTopo">
+                                        <div class="grid1">
+                                            <div class="coluna1Topo baseline">
+                                                <span id="spanLevelCriatura"
+                                                    style="padding-left: 30px;position: absolute;">5</span>
+                                                <img class="imgLevel" style="position: absolute;"
+                                                    src="assets/icons/level.png" alt="" srcset="">
+                                            </div>
+                                        </div>
+                                        <div class="grid2">
+                                            <div class="coluna1Topo">
+                                                <div class="coluna1Topo">
+                                                    <img class="imgLevel" src="assets/icons/level.png" alt="" srcset="">
+                                                    <span id="spanLevelCriatura">5</span>
+                                                </div>
+                                            </div>
+                                            <div class="coluna2Topo">
+                                                <div class="coluna1Topo">
+                                                    <span id="spanLevelCriatura">5</span>
+                                                    <img class="imgLevel" src="assets/icons/level.png" alt="" srcset="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="imagemCriatura">
+                                        <img class="card-img-top" id="imgCriaturaInimigo" alt="Card image cap">
+                                    </div>
+                                    <div class="bodyBaixo">
+                                        <div class="grid1">
+                                            <div class="coluna1Baixo">
+                                                <div class="coluna1Baixo baseline">
+                                                    <img class="imgLevel" src="assets/icons/level.png" alt="" srcset="">
+                                                    <span id="spanLevelCriatura">5</span>
+                                                </div>
+                                            </div>
+                                            <div class="coluna2Baixo">
+                                                <div class="coluna1Baixo baseline">
+                                                    <span id="spanLevelCriatura">50</span>
+                                                    <img class="imgLevel" src="assets/icons/level.png" alt="" srcset="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid2">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card__face card__face--back"
+                                style="display: flex;align-items: center;justify-content: center;">
+                                <img class="card-img-top" src="assets/img/carta/verso.png"
+                                    style="width: max-content;height: inherit;" alt="Card image cap">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="row">
+                <div class="col-md-12" style="display: flex;justify-content: space-around;flex-wrap: wrap;">
+                    <h6 id="valorSuaCriatura"></h6>
+                    <h6 id="valorCriaturaInimiga"></h6>
+                </div>
                 <div class="col-md-12" style="display: flex;justify-content: space-around;flex-wrap: wrap;">
                     <button type="button" id="btnCalcularDano" class="btn btn-dark w-100 mb-1"
                         onclick="calcularDano()">Calcular dano</button>
@@ -35,83 +168,40 @@
             </div>
             <div class="row">
                 <div class="col-md-4 alinharComponentesCriaturas">
-                    <!-- <div class="card alinharCard" style="width: 20rem;">
-                        <img class="card-img-top" id="imgCriatura" style="width: 100%;height: fit-content;"
-                            alt="Card image cap">
-                    </div> -->
                     <div class="scene scene--card">
-                        <div class="card">
+                        <div class="card" id="cardCriaturaInimigo">
                           <div class="card__face card__face--front">
-                            <img class="card-img-top" id="imgCriatura" style="width: max-content;height: inherit;"
+                            <img class="card-img-top" id="imgCriaturaInimigo" style="width: max-content;height: inherit;"
                             alt="Card image cap">
                           </div>
                           <div class="card__face card__face--back" style="display: flex;align-items: center;">
                             <ul class="list-group" style="width: inherit;padding: 5px;">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Level
-                                    <span class="badge badge-primary badge-pill bg-blue" id="spanLevelCriatura"></span>
+                                    <span class="badge badge-primary badge-pill bg-blue" id="spanLevelInimigo"></span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Ataque
-                                    <span class="badge badge-primary badge-pill bg-blue" id="spanAtaqueCriatura"></span>
+                                    <span class="badge badge-primary badge-pill bg-blue" id="spanAtaqueInimigo"></span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Magia
-                                    <span class="badge badge-primary badge-pill bg-blue" id="spanMagiaCriatura"></span>
+                                    <span class="badge badge-primary badge-pill bg-blue" id="spanMagiaInimigo"></span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Defesa
-                                    <span class="badge badge-primary badge-pill bg-blue" id="spanDefesaCriatura"></span>
+                                    <span class="badge badge-primary badge-pill bg-blue" id="spanDefesaInimigo"></span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Vida
-                                    <span class="badge badge-primary badge-pill bg-blue" id="spanVidaCriatura"></span>
+                                    <span class="badge badge-primary badge-pill bg-blue" id="spanVidaInimigo"></span>
                                 </li>
                             </ul>
                           </div>
                         </div>
                     </div>
-                    
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12" style="display: flex;justify-content: space-around;flex-wrap: wrap;">
-                    <h6 id="valorSuaCriatura"></h6>
-                    <h6 id="valorCriaturaInimiga"></h6>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 alinharComponentesCriaturas">
-                    <div class="card alinharCard" style="width: 20rem">
-                        <img class="card-img-top" id="imgCriaturaInimigo" style="width: 100%;height: fit-content;"
-                            alt="Card image cap">
-                    </div>
-                    <ul class="list-group" style="width: inherit;margin-left: 5px;">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Level
-                            <span class="badge badge-primary badge-pill bg-blue" id="spanLevelInimigo"></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Ataque
-                            <span class="badge badge-primary badge-pill bg-blue" id="spanAtaqueInimigo"></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Magia
-                            <span class="badge badge-primary badge-pill bg-blue" id="spanMagiaInimigo"></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Defesa
-                            <span class="badge badge-primary badge-pill bg-blue" id="spanDefesaInimigo"></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Vida
-                            <span class="badge badge-primary badge-pill bg-blue" id="spanVidaInimigo"></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
+            </div> -->
     </section>
 
     <section class="container" id="caraCoroaSessao"
