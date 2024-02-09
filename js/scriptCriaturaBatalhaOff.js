@@ -27,6 +27,8 @@ let valorSuaCriatura = document.querySelector("#valorSuaCriatura");
 let valorCriaturaInimiga = document.querySelector("#valorCriaturaInimiga");
 const spanVidaInimigo = document.getElementById('spanVidaInimigo');
 const spanVidaCriatura = document.getElementById('spanVidaCriatura');
+let cardSuaCriatura = document.querySelector('#cardSuaCriatura');
+let cardCriaturaInimigo = document.querySelector('#cardCriaturaInimigo');
 let inimigoUsouMagia = false;
 let suaCriatura;
 let resultadoValorCriatura = 0;
@@ -298,6 +300,14 @@ comboCaraCoroa.addEventListener('change', () => {
     botao.style.display = 'block';
 });
 
+cardSuaCriatura.addEventListener( 'click', function() {
+    cardSuaCriatura.classList.toggle('is-flipped');
+});
+
+cardCriaturaInimigo.addEventListener( 'click', function() {
+    cardCriaturaInimigo.classList.toggle('is-flipped');
+});
+
 const preencherCamposCriaturas = () => {
     const spanLevelCriatura = document.getElementById('spanLevelCriatura');
     const spanAtaqueCriatura = document.getElementById('spanAtaqueCriatura');
@@ -307,10 +317,10 @@ const preencherCamposCriaturas = () => {
 
     imgCriatura.src = "assets/img/criaturas/" + usuarioLogado.criaturas[0].img;
     spanLevelCriatura.innerText = usuarioLogado.criaturas[0].level;
-    spanAtaqueCriatura.innerText = usuarioLogado.criaturas[0].ataque;
-    spanMagiaCriatura.innerText = usuarioLogado.criaturas[0].magia;
-    spanDefesaCriatura.innerText = usuarioLogado.criaturas[0].defesa;
-    spanVidaCriatura.innerText = usuarioLogado.criaturas[0].vida;
+    // spanAtaqueCriatura.innerText = usuarioLogado.criaturas[0].ataque;
+    // spanMagiaCriatura.innerText = usuarioLogado.criaturas[0].magia;
+    // spanDefesaCriatura.innerText = usuarioLogado.criaturas[0].defesa;
+    // spanVidaCriatura.innerText = usuarioLogado.criaturas[0].vida;
 
 }
 const preencherCamposInimigos = () => {
@@ -321,18 +331,18 @@ const preencherCamposInimigos = () => {
     const imgCriaturaInimigo = document.getElementById('imgCriaturaInimigo');
 
     imgCriaturaInimigo.src = "assets/img/criaturas/" + criaturaInimiga.img;
-    spanLevelInimigo.innerText = criaturaInimiga.level;
-    spanAtaqueInimigo.innerText = criaturaInimiga.ataque;
-    spanMagiaInimigo.innerText = criaturaInimiga.magia;
-    spanDefesaInimigo.innerText = criaturaInimiga.defesa;
-    spanVidaInimigo.innerText = criaturaInimiga.vida;
+    // spanLevelInimigo.innerText = criaturaInimiga.level;
+    // spanAtaqueInimigo.innerText = criaturaInimiga.ataque;
+    // spanMagiaInimigo.innerText = criaturaInimiga.magia;
+    // spanDefesaInimigo.innerText = criaturaInimiga.defesa;
+    // spanVidaInimigo.innerText = criaturaInimiga.vida;
 }
 
 const main = () => {
     caraCoroaSessao.style.display = 'none';
-    btnCalcularDano.style.display = 'none';
-    btnCalcularDefesa.style.display = 'none';
-    btnCalcularMagia.style.display = 'none';
+    // btnCalcularDano.style.display = 'none';
+    // btnCalcularDefesa.style.display = 'none';
+    // btnCalcularMagia.style.display = 'none';
     if (criaturaInimiga != null) {
         criaturaInimiga = JSON.parse(criaturaInimiga);
         pegarTodosJogadores().then(() => {
@@ -352,7 +362,3 @@ const main = () => {
 
 main();
 
-var card = document.querySelector('.card');
-card.addEventListener( 'click', function() {
-  card.classList.toggle('is-flipped');
-});
