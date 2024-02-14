@@ -20,6 +20,7 @@ let banner = document.querySelector("#banner");
 let btnLogin = document.querySelector("#btnLogin");
 let pontosH6 = document.querySelector("#pontosH6");
 let nickH6 = document.querySelector("#nickH6");
+let deslogar = document.querySelector("#deslogar");
 let questBtn = document.querySelector("#questBtn");
 let linkProfile = document.querySelector("#linkProfile");
 let skills = document.querySelector("#skills");
@@ -339,9 +340,19 @@ const efetuarLogin = () => {
             });
             // criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
             linkProfile.style.display = 'block';
+            deslogar.style.display = 'inline';
             skills.style.display = 'inline';
         }    
     }
+}
+
+const deslogarUsuario = () => {
+    window.localStorage.clear();
+    linkProfile.style.display = 'none';
+    deslogar.style.display = 'none';
+    skills.style.display = 'none';
+    btnLogin.style.display = 'inline';
+    questBtn.style.display = 'none';
 }
 
 const checarUsuarioLogado = () => {
@@ -378,6 +389,7 @@ const main = () => {
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
         // criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
+        deslogar.style.display = usuarioLogado != null ? 'inline' : 'none';
     });
     pegarTodosItens().then(() => {
         itens.forEach(element => {
