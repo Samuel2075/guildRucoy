@@ -25,6 +25,7 @@ let sessaoVencedores = document.querySelector('#sessaoVencedores');
 let btnRegistrarColeta = document.querySelector("#btnRegistrarColeta");
 let listaQuest = document.querySelector("#listaQuest");
 let sessaoQuest = document.querySelector("#sessaoQuest");
+let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
 
 const pegarTodosJogadores = async () => {
     await db.collection('jogadores').get().then(data =>{
@@ -259,7 +260,6 @@ const listaEventos = () => {
 }
 
 const listaEventosVencedores = () => {
-    let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
     listaEventosVencedor.innerHTML = '';
     eventoVencedores.forEach(element => {
         listaEventosVencedor.append(criarComponenteListaEventosVencedores(element));
@@ -333,10 +333,9 @@ const salvarEventoVencedor = () => {
     let jogadorEventoSelectVencedor = document.querySelector('#jogadorEventoSelectVencedor');
     const resultEvento = eventos.filter((evento) => evento.id == eventoSelectVencedor.value);
     const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorEventoSelectVencedor.value);
+    debugger
     if(resultEvento[0].nome == "Quiz") {
         usuarioLogado.quiz = usuarioLogado.quiz + resultEvento[0].ponto;
-        adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
-        atualizarJogador(usuarioLogado);
         Swal.fire({
             title: 'Vencedor registrado com sucesso!',
             icon: 'success',
@@ -344,8 +343,6 @@ const salvarEventoVencedor = () => {
         });
     } else if(resultEvento[0].nome == "Esconde-esconde") {
         usuarioLogado.escondeEsconde = usuarioLogado.escondeEsconde + resultEvento[0].ponto;
-        adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
-        atualizarJogador(usuarioLogado);
         Swal.fire({
             title: 'Vencedor registrado com sucesso!',
             icon: 'success',
@@ -364,6 +361,11 @@ const salvarEventoVencedor = () => {
             confirmButtonText: 'ok'
         });
     }
+    adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
+    atualizarJogador(usuarioLogado);
+    pegarTodosVencedoresEventos().then(() => {
+        listaEventosVencedores();
+    });
 }
 
 const salvarEvento = () => {
@@ -429,7 +431,7 @@ const main = () => {
     });
     sessaoTrocas.style.display = usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none';
     sessaoEventos.style.display = usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
-    sessaoVencedores.style.display = usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
+    sessaoVencedores.style.display = usuarioLogado != null && (usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' || usuarioLogado == 'gRdV8RxhWJnCUSnSAAl6') ? 'block' : 'none'; 
 
     if(usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU') {
         pegarTodasTrocas().then(() => {
