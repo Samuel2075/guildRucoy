@@ -333,16 +333,16 @@ const salvarEventoVencedor = () => {
     let jogadorEventoSelectVencedor = document.querySelector('#jogadorEventoSelectVencedor');
     const resultEvento = eventos.filter((evento) => evento.id == eventoSelectVencedor.value);
     const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorEventoSelectVencedor.value);
-    debugger
+    
     if(resultEvento[0].nome == "Quiz") {
-        usuarioLogado.quiz = usuarioLogado.quiz + resultEvento[0].ponto;
+        resultJogador[0].quiz = resultJogador[0].quiz + resultEvento[0].ponto;
         Swal.fire({
             title: 'Vencedor registrado com sucesso!',
             icon: 'success',
             confirmButtonText: 'ok'
         });
     } else if(resultEvento[0].nome == "Esconde-esconde") {
-        usuarioLogado.escondeEsconde = usuarioLogado.escondeEsconde + resultEvento[0].ponto;
+        resultJogador[0].escondeEsconde = resultJogador[0].escondeEsconde + resultEvento[0].ponto;
         Swal.fire({
             title: 'Vencedor registrado com sucesso!',
             icon: 'success',
@@ -362,7 +362,7 @@ const salvarEventoVencedor = () => {
         });
     }
     adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
-    atualizarJogador(usuarioLogado);
+    atualizarJogador(resultJogador[0]);
     pegarTodosVencedoresEventos().then(() => {
         listaEventosVencedores();
     });
