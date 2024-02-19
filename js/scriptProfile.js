@@ -16,6 +16,7 @@ let quests = [];
 let trocas = [];
 let eventos = [];
 let eventoVencedores = [];
+let adms = [];
 let usuarioLogado = window.localStorage.getItem("usuarioLogado");
 let levelGuild = document.querySelector('#levelGuild');
 let listaTrocas = document.querySelector('#listaTrocas');
@@ -34,6 +35,12 @@ const pegarTodosJogadores = async () => {
             player.id = element.id;
             jogadores.push(player);
         });
+    });
+}
+
+const pegarTodosAdms = async () => {
+    await db.collection('adms').get().then(data =>{
+        adms.push(data.docs[0].data().adms)
     });
 }
 
@@ -418,26 +425,32 @@ const cadastrarQuest = () => {
 
 const registrarVencedor = () => {
     $('#modalEventoVencedor').modal();
+}
 
+const verificarPermissoes = () => {
+    btnRegistrarColeta.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    sessaoQuest.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    sessaoTrocas.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
+    sessaoEventos.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    sessaoVencedores.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    if(usuarioLogado != null && adms[0].includes(usuarioLogado.id)) {
+        pegarTodasTrocas().then(() => {
+            preencherListaTrocas();
+        });
+    }
 }
 
 const main = () => {
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
-        btnRegistrarColeta.style.display = usuarioLogado.id == '05gmdpZkRWhckcMOZssB' || usuarioLogado.id == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
-        sessaoQuest.style.display = usuarioLogado.levelGuild >= 3 ? 'block' : 'none'; 
         criarGraficoSkill();
         listarContribuicoes();
     });
-    sessaoTrocas.style.display = usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none';
-    sessaoEventos.style.display = usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' ? 'block' : 'none'; 
-    sessaoVencedores.style.display = usuarioLogado != null && (usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU' || usuarioLogado == 'gRdV8RxhWJnCUSnSAAl6') ? 'block' : 'none'; 
 
-    if(usuarioLogado == 'kleCCPmgohdnhXJ7bLrg' || usuarioLogado == 'ivRrYp3VSS5yQ5gTZ0oU') {
-        pegarTodasTrocas().then(() => {
-            preencherListaTrocas();
-        });
-    }
+    pegarTodosAdms().then(() => {
+        verificarPermissoes();
+    });
+    
     pegarTodasQuests().then(() => {
         listarQuests();
     });
