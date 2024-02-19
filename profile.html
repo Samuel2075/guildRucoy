@@ -103,6 +103,18 @@
             </div>
         </section>
 
+        <section class="pt-4" style="margin-bottom: 15px;" id="sessaoCadastrarJogador">
+            <div class="container px-lg-5">
+                <div class="col-md-12">
+                    <h5>Registrar Jogadores</h5>
+                    
+                    <button type="button" id="btnRegistrarJogador" class="btn btn-primary w-100 mt-3" data-toggle="modal" data-target="#modalCadastroJogador">
+                        Registrar novo jogador
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <div class="modal fade" id="modalColeta" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -226,6 +238,63 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modalCadastroJogador" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Cadastro Jogador</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="nickInputCadastroJogador">Nick</label>
+                                    <input type="text" class="form-control" id="nickInputCadastroJogador" placeholder="Nick">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="senhaInputCadastroJogador">Senha</label>
+                                    <input type="text" class="form-control" id="senhaInputCadastroJogador" placeholder="Senha">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="levelInputCadastroJogador">Level</label>
+                                    <input type="number" class="form-control" id="levelInputCadastroJogador" placeholder="Level">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="meleeInputCadastroJogador">Melee</label>
+                                    <input type="text" class="form-control" id="meleeInputCadastroJogador" placeholder="Melee">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="distanciaInputCadastroJogador">Distancia</label>
+                                    <input type="text" class="form-control" id="distanciaInputCadastroJogador" placeholder="Distance">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="magiaInputCadastroJogador">Magia</label>
+                                    <input type="text" class="form-control" id="magiaInputCadastroJogador" placeholder="Magia">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="defesaInputCadastroJogador">Defesa</label>
+                                    <input type="text" class="form-control" id="defesaInputCadastroJogador" placeholder="Defesa">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" onclick="cadastrarJogador()" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
      
         <!-- Footer-->
         <footer class="py-5 bg-dark">
