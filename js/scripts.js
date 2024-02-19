@@ -229,7 +229,8 @@ const criarComponenteItem = (itemElement) => {
     var pNome = document.createElement('p');
     var btnTrocaItem = document.createElement('button');
     var img = document.createElement('img');
-    img.src = 'assets/img/' + itemElement.img;
+    let idImgDrive = itemElement.img.split("d/")[1].split("/")[0];
+    img.src = "https://drive.google.com/thumbnail?id="+ idImgDrive;
     img.style.borderRadius = '15px';
 
     

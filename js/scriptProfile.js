@@ -26,6 +26,7 @@ let sessaoVencedores = document.querySelector('#sessaoVencedores');
 let btnRegistrarColeta = document.querySelector("#btnRegistrarColeta");
 let listaQuest = document.querySelector("#listaQuest");
 let sessaoQuest = document.querySelector("#sessaoQuest");
+let sessaoCadastrarJogador = document.querySelector("#sessaoCadastrarJogador");
 let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
 
 const pegarTodosJogadores = async () => {
@@ -36,6 +37,11 @@ const pegarTodosJogadores = async () => {
             jogadores.push(player);
         });
     });
+}
+
+const adicionarJogador = async (defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos) => {
+    const player = {defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos}
+    await db.collection('jogadores').add(player);
 }
 
 const pegarTodosAdms = async () => {
@@ -433,10 +439,33 @@ const verificarPermissoes = () => {
     sessaoTrocas.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
     sessaoEventos.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
     sessaoVencedores.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    sessaoCadastrarJogador.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
     if(usuarioLogado != null && adms[0].includes(usuarioLogado.id)) {
         pegarTodasTrocas().then(() => {
             preencherListaTrocas();
         });
+    }
+}
+
+const cadastrarJogador = () => {
+    debugger
+    let nickCadastro = document.querySelector("#nickInputCadastroJogador").value;
+    let senhaCadastro = document.querySelector("#senhaInputCadastroJogador").value;
+    let levelCadastro = parseInt(document.querySelector("#levelInputCadastroJogador").value);
+    let meleeCadastro = parseInt(document.querySelector("#meleeInputCadastroJogador").value);
+    let distanciaCadastro = parseInt(document.querySelector("#distanciaInputCadastroJogador").value);
+    let magiaCadastro = parseInt(document.querySelector("#magiaInputCadastroJogador").value);
+    let defesaCadastro = parseInt(document.querySelector("#defesaInputCadastroJogador").value);
+    let questsFinalizadas = [];
+    let criaturas = [];
+    let xpQuest = 0;
+    let pontosAtributos = 0;
+
+    if(nickCadastro != "" && senhaCadastro != "" && levelCadastro != "" && meleeCadastro != "" && distanciaCadastro != "" && magiaCadastro != "" && defesaCadastro != "") {
+        // defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests
+        adicionarJogador(defesaCadastro, distanciaCadastro, 0, levelCadastro, magiaCadastro, meleeCadastro, nickCadastro, 0, 0, 1, senhaCadastro, false, 0, questsFinalizadas, 1, 0, criaturas, xpQuest, pontosAtributos);
+    } else {
+        alert("Todos os campos são obrigatórios, favor preenche-los");
     }
 }
 
