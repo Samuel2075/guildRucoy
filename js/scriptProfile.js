@@ -27,6 +27,7 @@ let btnRegistrarColeta = document.querySelector("#btnRegistrarColeta");
 let listaQuest = document.querySelector("#listaQuest");
 let sessaoQuest = document.querySelector("#sessaoQuest");
 let sessaoCadastrarJogador = document.querySelector("#sessaoCadastrarJogador");
+let sessaoCadastroItem = document.querySelector("#sessaoCadastroItem");
 let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
 
 const pegarTodosJogadores = async () => {
@@ -42,6 +43,11 @@ const pegarTodosJogadores = async () => {
 const adicionarJogador = async (defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos) => {
     const player = {defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos}
     await db.collection('jogadores').add(player);
+}
+
+const adicionarItem = async (nome, ponto, img) => {
+    const itemObj = {nome, ponto, img}
+    await db.collection('itens').add(itemObj);
 }
 
 const pegarTodosAdms = async () => {
@@ -440,6 +446,7 @@ const verificarPermissoes = () => {
     sessaoEventos.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
     sessaoVencedores.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
     sessaoCadastrarJogador.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    sessaoCadastroItem.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
     if(usuarioLogado != null && adms[0].includes(usuarioLogado.id)) {
         pegarTodasTrocas().then(() => {
             preencherListaTrocas();
@@ -448,7 +455,6 @@ const verificarPermissoes = () => {
 }
 
 const cadastrarJogador = () => {
-    debugger
     let nickCadastro = document.querySelector("#nickInputCadastroJogador").value;
     let senhaCadastro = document.querySelector("#senhaInputCadastroJogador").value;
     let levelCadastro = parseInt(document.querySelector("#levelInputCadastroJogador").value);
@@ -464,8 +470,40 @@ const cadastrarJogador = () => {
     if(nickCadastro != "" && senhaCadastro != "" && levelCadastro != "" && meleeCadastro != "" && distanciaCadastro != "" && magiaCadastro != "" && defesaCadastro != "") {
         // defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests
         adicionarJogador(defesaCadastro, distanciaCadastro, 0, levelCadastro, magiaCadastro, meleeCadastro, nickCadastro, 0, 0, 1, senhaCadastro, false, 0, questsFinalizadas, 1, 0, criaturas, xpQuest, pontosAtributos);
+        Swal.fire({
+            title: 'Jogador cadastrado com sucesso',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
     } else {
-        alert("Todos os campos são obrigatórios, favor preenche-los");
+        Swal.fire({
+            title: 'Falha ao cadastrar o jogador',
+            text: 'Todos os campos são obrigatórios, favor preenche-los!',
+            icon: 'error',
+            confirmButtonText: 'ok'
+        });
+    }
+}
+
+const cadastrarItem = () => {
+    let nomeInputCadastroItem = document.querySelector("#nomeInputCadastroItem").value;
+    let pontosInputCadastroItem = document.querySelector("#pontosInputCadastroItem").value;
+    let linkDriveInputCadastroItem = document.querySelector("#linkDriveInputCadastroItem").value;
+
+    if(nomeInputCadastroItem != "" && pontosInputCadastroItem != "" && linkDriveInputCadastroItem != "") {
+        adicionarItem(nomeInputCadastroItem, parseInt(pontosInputCadastroItem), linkDriveInputCadastroItem);
+        Swal.fire({
+            title: 'Item cadastrado com sucesso',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    } else {
+        Swal.fire({
+            title: 'Falha ao cadastrar item',
+            text: 'Todos os campos são obrigatórios, favor preenche-los!',
+            icon: 'error',
+            confirmButtonText: 'ok'
+        });
     }
 }
 

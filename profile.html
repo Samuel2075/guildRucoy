@@ -114,6 +114,56 @@
                 </div>
             </div>
         </section>
+        
+        <section class="pt-4" style="margin-bottom: 15px;" id="sessaoCadastroItem">
+            <div class="container px-lg-5">
+                <div class="col-md-12">
+                    <h5>Cadastrar itens</h5>
+                    
+                    <button type="button" id="btnRegistrarItem" class="btn btn-primary w-100 mt-3" data-toggle="modal" data-target="#modalCadastroItem">
+                        Cadastrar item
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        
+        <div class="modal fade" id="modalCadastroItem" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Cadastro Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="nomeInputCadastroItem">Nome</label>
+                            <input type="text" class="form-control" id="nomeInputCadastroItem" placeholder="Nome">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pontosInputCadastroItem">Pontos</label>
+                            <input type="number" class="form-control" id="pontosInputCadastroItem" placeholder="Pontos">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="linkDriveInputCadastroItem">Link drive</label>
+                            <input type="text" class="form-control" id="linkDriveInputCadastroItem" placeholder="Imagem">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" onclick="cadastrarItem()" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <div class="modal fade" id="modalColeta" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
