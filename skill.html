@@ -17,23 +17,52 @@
         <div class="container px-lg-5 alignNav">
             <h6 id="pontosH6" class="navH6"></h6>
             <h6 id="nickH6" class="navH6"></h6>
+            <a href="index.html" class="btn btn-primary">início</a>
         </div>
     </nav>
     <section class="pt-5">
-        <div class="container">
+        <div class="container mb-3">
             <div class="row">
                 <div class="col-md-12 imgAddCard">
-                    <div class="mb-3">
+                    <div class="mb-3 mt-5">
                         <label for="inputImage" class="form-label">Escolha uma imagem das suas skills.</label>
                         <input class="form-control" type="file" id="inputImage" accept="image/*">
                     </div>
-                    <div class="mb-3">
-                        <button type="button" class="btn btn-primary" onclick="clickAtualizar()">Atualizar Skills</button>
-                        <a href="index.html" class="btn btn-primary">início</a>
-                    </div>
                 </div>
-                <div class="col-md-6 imgAddCard mb-3 mt-3">
-                    <textarea name="textSkills" style="text-align: center;height: 150px;" class="w-100" id="textSkills" cols="30" rows="10"></textarea>
+                <div class="col-md-6 mb-3 mt-3">
+                    <!-- <textarea name="textSkills" style="text-align: center;height: 150px;" class="w-100" id="textSkills" cols="30" rows="10"></textarea> -->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="levelInput">Level</label>
+                            <input type="number" class="form-control" id="levelInput" placeholder="Level">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="meleeInput">Melee</label>
+                            <input type="number" class="form-control" id="meleeInput" placeholder="Melee">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="distanciaInput">Distancia</label>
+                            <input type="number" class="form-control" id="distanciaInput" placeholder="Distance">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="magiaInput">Magia</label>
+                            <input type="number" class="form-control" id="magiaInput" placeholder="Magia">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="defesaInput">Defesa</label>
+                            <input type="number" class="form-control" id="defesaInput" placeholder="Defesa">
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <button type="button" class="btn btn-primary" onclick="clickAtualizar()">Atualizar Skills</button>
+                    </div>
+
                 </div>
                 <div class="col-md-6 imgAddCard">
                     <img class="preview" alt="">

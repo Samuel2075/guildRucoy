@@ -15,12 +15,17 @@ let usuarioLogado = window.localStorage.getItem("usuarioLogado");
 let jogadores = [];
 const inputImage = document.querySelector('#inputImage');
 const btnAdcImage = document.querySelector('.btnAdcImagens');
-const saidaTexto  = document.querySelector('#textSkills');
+// const saidaTexto  = document.querySelector('#textSkills');
 const imagePreview = document.querySelector('.preview');
 const barraProgresso = document.querySelector('.barraProgresso');
 const btnAtualizarSkill = document.querySelector('.btnAtualizarSkill');
 let pontosH6 = document.querySelector("#pontosH6");
 let nickH6 = document.querySelector("#nickH6");
+const levelInput  = document.querySelector('#levelInput');
+const meleeInput  = document.querySelector('#meleeInput');
+const distanciaInput  = document.querySelector('#distanciaInput');
+const magiaInput  = document.querySelector('#magiaInput');
+const defesaInput  = document.querySelector('#defesaInput');
 
 let splitIsNaN = false;
 let level; 
@@ -67,13 +72,12 @@ const preencherCampos = () => {
 }
 
 const clickAtualizar = () => {
-    splitIsNaN = isNaN(parseInt(level)) && isNaN(parseInt(melee)) && isNaN(parseInt(dist)) && isNaN(parseInt(magic)) && isNaN(parseInt(defence));
-    if(!splitIsNaN) {
-    usuarioLogado.level = parseInt(level);
-    usuarioLogado.melee = parseInt(melee);
-    usuarioLogado.distance = parseInt(dist);
-    usuarioLogado.magic = parseInt(magic);
-    usuarioLogado.defence = parseInt(defence);
+    if(levelInput.value != '' && meleeInput.value != '' && distanciaInput.value != '' && magiaInput.value != '' && defesaInput.value != '') {
+    usuarioLogado.level = parseInt(levelInput.value);
+    usuarioLogado.melee = parseInt(meleeInput.value);
+    usuarioLogado.distance = parseInt(distanciaInput.value);
+    usuarioLogado.magic = parseInt(magiaInput.value);
+    usuarioLogado.defence = parseInt(defesaInput.value);
     atualizarJogador(usuarioLogado);
     Swal.fire({
         title: 'Skill atualizada com sucesso',
@@ -98,7 +102,6 @@ inputImage.addEventListener('change' , function(){
 
 function detectarTexto1(text) {
     let vetorSplit = text.split(':');
-    debugger
     if(vetorSplit.length == 6) {
         level = parseInt(vetorSplit[1].substring(0, 4));
         melee = parseInt(vetorSplit[2].substring(0, 4));
@@ -136,6 +139,9 @@ function detectarTexto1(text) {
                 splitElementArray = element.split('=');
             }
             novoArray.push(splitElementArray[1]);
+        });
+        novoArray = novoArray.filter(function( element ) {
+            return element !== undefined;
         });
         level = parseInt(novoArray[0].substring(0, 4));
         melee = parseInt(novoArray[1].substring(0, 4));
@@ -194,6 +200,9 @@ function detectarTexto1(text) {
                 }
             }
         });
+        novoArray = novoArray.filter(function( element ) {
+            return element !== undefined;
+        });
         level = parseInt(novoArray[0].substring(0, 4));
         melee = parseInt(novoArray[1].substring(0, 4));
         dist = parseInt(novoArray[2].substring(0, 4));
@@ -216,6 +225,10 @@ function detectarTexto2(text) {
             novoArray.push(splitElementArray[1]);
         });
 
+        novoArray = novoArray.filter(function( element ) {
+            return element !== undefined;
+        });
+
         level = parseInt(novoArray[0].substring(0, 4));
         melee = parseInt(novoArray[1].substring(0, 4));
         dist = parseInt(novoArray[2].substring(0, 4));
@@ -228,7 +241,7 @@ async function detectText() {
     const inputImage = document.getElementById('inputImage');
     const file = inputImage.files[0];
 
-    if (file) {
+    
       const reader = new FileReader();
 
       reader.onload = async function(e) {
@@ -248,22 +261,16 @@ async function detectText() {
             );
 
             detectarTexto1(result.text);
-            let stringCampoTexto = `Level: ${level}\nMelee: ${melee}\nDist: ${dist}\nMagic: ${magic}\nDef: ${defence}`;
-            saidaTexto.value = stringCampoTexto;
-            // splitIsNaN = isNaN(parseInt(level)) || isNaN(parseInt(melee)) || isNaN(parseInt(dist)) || isNaN(parseInt(magic)) || isNaN(parseInt(defence));
-       
+            levelInput.value = level;
+            meleeInput.value = melee;
+            distanciaInput.value = dist;
+            magiaInput.value = magic;
+            defesaInput.value = defence;
         };
       };
 
       reader.readAsDataURL(file);
-    } else {
-        Swal.fire({
-            title: 'Falha ao carregar imagem!',
-            text: 'Selecione uma imagem.',
-            icon: 'error',
-            confirmButtonText: 'ok'
-        });
-    }
+    
 
   }
 
