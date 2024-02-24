@@ -366,7 +366,6 @@ const main = () => {
                 listarSuasCriaturas();
                 if(!verificarTemCriatura()) {
                     let apresentarMsg = window.localStorage.getItem("apresentarMsg");
-                    debugger
                     if(apresentarMsg == null) {
                         Swal.fire({
                             icon: "info",
