@@ -408,10 +408,11 @@ const salvarEventoVencedor = () => {
         });
     } else {
         Swal.fire({
-            title: 'Em implementação',
+            title: 'Vencedor registrado com sucesso!',
             icon: 'success',
             confirmButtonText: 'ok'
         });
+        resultJogador[0].pvp = resultJogador[0].pvp + resultEvento[0].ponto;
     }
     adicionarEventoVencedor(resultEvento[0].nome, resultJogador[0].nick);
     atualizarJogador(resultJogador[0]);
