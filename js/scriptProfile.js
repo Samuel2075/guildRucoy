@@ -566,7 +566,7 @@ const calcularPontos = () => {
             });
             pegarTodosJogadores().then(() => {
                 jogadores.forEach(element => {
-                    if(element.valorColeta > 0) {
+                    if(element.valorColeta > 400000) {
                         pontosSkill = 0;
                         pontosSkill = (element.defence + element.distance + element.level + element.magic + element.melee) / 200;
                         if(pontosSkill < 1) {
