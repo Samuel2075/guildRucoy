@@ -506,13 +506,10 @@ const calcularPontosQuests = (jogadorCorrente) => {
     return jogadorCorrente.questsFinalizadas.length > 0 ? Math.round(pontosTotais / 2) : 0;
 }
 
-function shuffleArray(arr) {
-    for (let i = quests.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
+const shuffle = (v) => {
+    for(var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
+    return v;
+};
 
 const gerarQuestsSemana = () => {
     questsSemana.forEach(element => {
@@ -520,7 +517,7 @@ const gerarQuestsSemana = () => {
     });
     questsSemana = [];
     pegarTodasQuests().then(() => {
-        const embaralharQuests = shuffleArray(quests);
+        const embaralharQuests = shuffle(quests);
         questsSemana.push(embaralharQuests[0]);
         questsSemana.push(embaralharQuests[1]);
         questsSemana.push(embaralharQuests[2]);
