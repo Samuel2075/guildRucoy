@@ -58,8 +58,14 @@ const adicionarItem = async (nome, ponto, img) => {
 }
 
 const criarBkp = async (jogadores) => {
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
     const bkp = {
-        jogadores: jogadores
+        jogadores: jogadores,
+        diaBKP: currentDate
     };
     await db.collection('bkp').add(bkp);
 }
@@ -500,13 +506,21 @@ const calcularPontosQuests = (jogadorCorrente) => {
     return jogadorCorrente.questsFinalizadas.length > 0 ? Math.round(pontosTotais / 2) : 0;
 }
 
+function shuffleArray(arr) {
+    for (let i = quests.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 const gerarQuestsSemana = () => {
     questsSemana.forEach(element => {
         deletarQuestSemana(element);
     });
     questsSemana = [];
     pegarTodasQuests().then(() => {
-        const embaralharQuests = quests.sort(() => Math.random() - 0.5);
+        const embaralharQuests = shuffleArray(quests);
         questsSemana.push(embaralharQuests[0]);
         questsSemana.push(embaralharQuests[1]);
         questsSemana.push(embaralharQuests[2]);

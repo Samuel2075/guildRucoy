@@ -46,7 +46,16 @@ const atualizarJogador = (id, usuario) => {
 }
 
 const cadastrarJogadorLevelUp = async (usuario) => {
-    await db.collection('levelUp').add(usuario);
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
+    const levelUp = {
+        usuario: usuario,
+        dia: currentDate
+    }
+    await db.collection('levelUp').add(levelUp);
 }
 
 const criarComponenteListaQuest = (index, quest) => {
