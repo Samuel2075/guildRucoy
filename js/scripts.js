@@ -15,6 +15,7 @@ let jogadores = [];
 let comboTipoRank = document.getElementById("tipoRank");
 let ulObjeto = document.querySelector("#listaRank");
 let itensCard = document.querySelector("#itensCard");
+let itensVendaCard = document.querySelector("#itensVendaCard");
 let usuarioLogado = window.localStorage.getItem("usuarioLogado");
 let banner = document.querySelector("#banner");
 let btnLogin = document.querySelector("#btnLogin");
@@ -27,6 +28,7 @@ let skills = document.querySelector("#skills");
 let criaturas = document.querySelector("#criaturas");
 
 let itens = [];
+let itemsVenda = [];
 
 const pegarTodosJogadores = async () => {
     await db.collection('jogadores').get().then(data =>{
@@ -46,6 +48,19 @@ const pegarTodosItens = async () => {
             itens.push(item);
         });   
     });
+}
+
+const pegarTodasVendas = async () => {
+  try {
+    const snap = await db.collection('itemsVenda').get();
+    itensVenda = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+    itensVenda.forEach(venda => {
+      itensVendaCard.append(criarComponenteListaVendas(venda));
+    });
+  } catch (e) {
+    console.error('Erro ao carregar vendas:', e);
+  }
 }
 
 const adicionarItemTroca = async (item, ponto, jogador) => {
@@ -273,6 +288,20 @@ const criarComponenteItem = (itemElement) => {
     return divColLg6;
 }
 
+const criarComponenteListaVendas = (element) => {
+    var liObjeto = document.createElement('li');
+    var spanObjeto = document.createElement('span');
+
+    liObjeto.className = "list-group-item d-flex justify-content-between align-items-center";
+    liObjeto.innerText = `${element.item} / ${element.fundo} / ${element.usuario.nick} / ${element.preco}`;
+
+    spanObjeto.style.backgroundColor = 'blue';
+    spanObjeto.className = "badge badge-primary badge-pill";
+
+    liObjeto.append(spanObjeto);
+    return liObjeto;
+}
+
 const trocarItem = async (item, pontoValor) => {
 
     if(pontoValor > usuarioLogado.pontos) {
@@ -403,6 +432,7 @@ const main = () => {
             itensCard.append(criarComponenteItem(element));
         });
     });
+    pegarTodasVendas();
 }
 
 main();

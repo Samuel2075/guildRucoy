@@ -31,6 +31,7 @@ let sessaoCadastroItem = document.querySelector("#sessaoCadastroItem");
 let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
 let btnCalcularPontos = document.querySelector("#btnCalcularPontos");
 let questsSemana = [];
+let itensVenda = [];
 
 const pegarTodosJogadores = async () => {
     await db.collection('jogadores').get().then(data => {
@@ -141,6 +142,11 @@ const pegarTodasQuestsSemanais = async () => {
 const adicionarEvento = async (nome, ponto) => {
     const eventoObj = { nome, ponto }
     await db.collection('eventos').add(eventoObj);
+}
+
+const adicionarVenda = async (item, fundo, preco, usuario) => {
+    const itemVendaObj = { item, fundo, preco, usuario }
+    await db.collection('itemsVenda').add(itemVendaObj);
 }
 
 const adicionarEventoVencedor = async (evento, jogador) => {
@@ -397,10 +403,78 @@ const salvarColeta = () => {
     listarContribuicoes();
 }
 
+const listarItensVenda = () => {
+    let itemVenda = document.querySelector('#itemVendaSelect');
+    itemVenda.innerHTML = '';
+    itensVenda.forEach(element => {
+        var optionSelect = document.createElement('option');
+        optionSelect.value = element.nome;
+        optionSelect.innerHTML = element.nome;
+        itemVenda.appendChild(optionSelect);
+    });
+}
+
+const listarItensVendaFundo = () => {
+    let itemVenda = document.querySelector('#fundoItemVenda');
+    itemVenda.innerHTML = '';
+    itensVendaSemRepeticao = [];
+    itensVenda.forEach(element => {
+        if(itensVendaSemRepeticao.includes(element.Fundo) == false) {
+            var optionSelect = document.createElement('option');
+            optionSelect.value = element.Fundo;
+            optionSelect.innerHTML = element.Fundo;
+            itemVenda.appendChild(optionSelect);
+            itensVendaSemRepeticao.push(element.Fundo);
+        }
+    });
+
+    var optionSelect = document.createElement('option');
+    optionSelect.value = "azul";
+    optionSelect.innerHTML = "azul";
+    itemVenda.appendChild(optionSelect);
+    itensVendaSemRepeticao.push("azul");
+
+    optionSelect.value = "roxo";
+    optionSelect.innerHTML = "roxo";
+    itemVenda.appendChild(optionSelect);
+    itensVendaSemRepeticao.push("roxo");
+    
+}
+
 const registrarEventoVencedor = () => {
     $('#modalEventoVencedor').modal();
     listarJogadorEventoVencedorSelect();
     listarEventosEventoVencedorSelect();
+}
+
+const adicionarItemVenda = () => {
+    $('#modalVendaItem').modal();
+    listarItensVenda();
+    listarItensVendaFundo();
+}
+
+const salvarVenda = () => {
+    let precoItemVenda = document.querySelector('#precoItemVenda');
+    let fundoItemVenda = document.querySelector('#fundoItemVenda');
+    let itemVendaSelect = document.querySelector('#itemVendaSelect');
+
+    if(precoItemVenda.value == "") {
+        Swal.fire({
+            title: 'Falha ao cadastrar venda',
+            text: 'Campo de preço é obrigatório!',
+            icon: 'error',
+            confirmButtonText: 'ok'
+        });
+    } else {
+        adicionarVenda(itemVendaSelect.value, fundoItemVenda.value, precoItemVenda.value, usuarioLogado);
+        Swal.fire({
+            title: 'Venda cadastrada com sucesso com sucesso!',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        });
+    }
+    
+    
 }
 
 const salvarEventoVencedor = () => {
@@ -720,7 +794,18 @@ const cadastrarItem = () => {
     }
 }
 
+const cadastrarItensVenda = () => {
+
+    fetch("./rucoy_itens_completo.json")
+      .then(response => response.json())
+      .then(json => {
+        itensVenda = json.itens;
+      })
+      .catch(err => console.error("Erro ao carregar JSON:", err));
+}
+
 const main = () => {
+    cadastrarItensVenda();
     pegarTodasQuestsSemanais();
 
     pegarTodosJogadores().then(() => {

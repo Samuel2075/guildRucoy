@@ -1,0 +1,1084 @@
+{
+  "itens": [
+    {
+      "nome": "Leather Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Armor",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Armor",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Armor",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Leather Helmet",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Helmet",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Helmet",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Helmet",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Helmet",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Helmet",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Helmet",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Helmet",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Helmet",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Helmet",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Helmet",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Helmet",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Helmet",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Helmet",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Leather Boots",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Boots",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Boots",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Boots",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Boots",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Boots",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Boots",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Boots",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Boots",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Boots",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Boots",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Boots",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Boots",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Boots",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Swift Boots",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Leather Gloves",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Gloves",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Gloves",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Gloves",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Gloves",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Gloves",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Gloves",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Gloves",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Gloves",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Gloves",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Gloves",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Gloves",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Gloves",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Gloves",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Titan Gloves",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Leather Legs",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Legs",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Legs",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Legs",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Legs",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Legs",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Legs",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Legs",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Legs",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Legs",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Legs",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Legs",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Legs",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Legs",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Titan Legs",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Leather Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Belt",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Belt",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Belt",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Belt",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Belt",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Belt",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Belt",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Belt",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Belt",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Void Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Titan Belt",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Wooden Shield",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Shield",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Shield",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Shield",
+      "Fundo": "verde"
+    },
+    {
+      "nome": "Battle Shield",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Gargoyle Shield",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Shield",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Shield",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Icy Shield",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Shield",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Shield",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Robe",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Brown Robe",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Mage Robe",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Robe",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Drow Robe",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Robe",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Robe",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Robe",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Robe",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Robe",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Robe",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Robe",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Leather Light Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Light Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Light Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Light Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Light Armor",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Light Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Light Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Light Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Light Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Light Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Light Armor",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Light Armor",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Hood",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Brown Hood",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Archer Hood",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Hood",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Drow Hood",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Hood",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Hood",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Hood",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Hood",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Hood",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Hood",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Hood",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Hat",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Brown Hat",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Mage Hat",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Hat",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Drow Hat",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Hat",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Hat",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Hat",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Hat",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Hat",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Hat",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Hat",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Golden Training Bow",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Training Bow",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Bow",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Bow",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Bow",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Drow Bow",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Bow",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Bow",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Bow",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Bow",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Icy Bow",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Bow",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Bow",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Golden Training Dagger",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Training Dagger",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Dagger",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Short Sword",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Sword",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Broadsword",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Slayer",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Slayer",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Slayer",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Slayer",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Icy Broadsword",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Broadsword",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Broadsword",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Golden Training Wand",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Training Wand",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Wooden Wand",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Novice Wand",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Priest Wand",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Royal Priest Wand",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Shaman Wand",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Gargoyle Wand",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Wand",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Wand",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Icy Wand",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Wand",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Golden Wand",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Leather Quiver",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Ancient Quiver",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Studded Quiver",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Iron Quiver",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soldier Quiver",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Steel Quiver",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard Quiver",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Gargoyle Quiver",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Quiver",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Quiver",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Quiver",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Quiver",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Recovery Quiver",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Quiver",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Golden Quiver",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Bag",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Silver Bag",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Blue Bag",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Backpack",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Silver Backpack",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Blue Backpack",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Green Backpack",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Gargoyle Backpack",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Dragon Backpack",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Minotaur Backpack",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Frozen Backpack",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Lava Backpack",
+      "Fundo": "amarelo"
+    },
+    {
+      "nome": "Recovery Backpack",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Healer Backpack",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Golden Backpack",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Santa Backpack",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Reinforced Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Life Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soul Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Healer Ring",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Ring",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Melee Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Distance Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Magic Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Defense Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Healer Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Recovery Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Melee Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Distance Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Magic Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Defense Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Void Melee Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Void Distance Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Void Magic Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Spiked Ring",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Life Pendant",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Soul Pendant",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Healer Necklace",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Recovery Necklace",
+      "Fundo": "laranja"
+    },
+    {
+      "nome": "Melee Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Distance Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Magic Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Defense Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Healer Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Recovery Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Melee Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Distance Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Magic Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Superior Defense Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Void Melee Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Void Distance Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Void Magic Necklace",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Stone Pendant",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Health Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Mana Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Greater Health Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Greater Mana Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Super Health Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Super Mana Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Ultimate Health Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Ultimate Mana Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Halloween Potion",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Beginners Town Scroll",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Explorers Town Scroll",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Return Scroll",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Destination Scroll",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Tracker Scroll",
+      "Fundo": "sem fundo"
+    }
+  ]
+}
