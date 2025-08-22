@@ -229,9 +229,15 @@ const criarComponenteItem = (itemElement) => {
     var pNome = document.createElement('p');
     var btnTrocaItem = document.createElement('button');
     var img = document.createElement('img');
-    let idImgDrive = itemElement.img.split("d/")[1].split("/")[0];
+    const regex = /^https:\/\/drive\.google\.com\/file\/d\/[A-Za-z0-9_-]+\/view(?:\?usp=sharing)?$/;
+    if(regex.test(itemElement.img) == false) {
+        //imagem não encontrado
+        itemElement.img = "https://drive.google.com/file/d/1SHG-4_q0PO1T2tFs4KXUIY859SO0dwxw/view?usp=sharing";
+    }
+    idImgDrive = itemElement.img.split("d/")[1].split("/")[0];
     img.src = "https://drive.google.com/thumbnail?id="+ idImgDrive;
     img.style.borderRadius = '15px';
+    img.style.width = 'inherit';
 
     
     divColLg6.className = 'col-md-6 col-xxl-4 mb-5';

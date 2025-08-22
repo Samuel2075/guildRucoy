@@ -33,8 +33,8 @@ let btnCalcularPontos = document.querySelector("#btnCalcularPontos");
 let questsSemana = [];
 
 const pegarTodosJogadores = async () => {
-    await db.collection('jogadores').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('jogadores').get().then(data => {
+        data.docs.forEach(element => {
             const player = element.data();
             player.id = element.id;
             jogadores.push(player);
@@ -43,17 +43,17 @@ const pegarTodosJogadores = async () => {
 }
 
 const adicionarJogador = async (defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos) => {
-    const player = {defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos}
+    const player = { defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos }
     await db.collection('jogadores').add(player);
 }
 
 const adicionarQuestSemana = async (nome, descricao, ponto) => {
-    const questObj = {nome, descricao, ponto}
+    const questObj = { nome, descricao, ponto }
     await db.collection('questsSemana').add(questObj);
 }
 
 const adicionarItem = async (nome, ponto, img) => {
-    const itemObj = {nome, ponto, img}
+    const itemObj = { nome, ponto, img }
     await db.collection('itens').add(itemObj);
 }
 
@@ -71,14 +71,14 @@ const criarBkp = async (jogadores) => {
 }
 
 const pegarTodosAdms = async () => {
-    await db.collection('adms').get().then(data =>{
+    await db.collection('adms').get().then(data => {
         adms.push(data.docs[0].data().adms)
     });
 }
 
 const pegarTodasQuests = async () => {
-    await db.collection('quests').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('quests').get().then(data => {
+        data.docs.forEach(element => {
             const quest = element.data();
             quest.id = element.id;
             quests.push(quest);
@@ -88,8 +88,8 @@ const pegarTodasQuests = async () => {
 
 const pegarTodosEventos = async () => {
     eventos = [];
-    await db.collection('eventos').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('eventos').get().then(data => {
+        data.docs.forEach(element => {
             const evento = element.data();
             evento.id = element.id;
             eventos.push(evento);
@@ -99,8 +99,8 @@ const pegarTodosEventos = async () => {
 
 const pegarTodosVencedoresEventos = async () => {
     eventoVencedores = [];
-    await db.collection('eventoVencedores').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('eventoVencedores').get().then(data => {
+        data.docs.forEach(element => {
             const eventoVencedor = element.data();
             eventoVencedor.id = element.id;
             eventoVencedores.push(eventoVencedor);
@@ -113,8 +113,8 @@ const deletarVencedorEvento = (vencedor) => {
 }
 
 const pegarTodasTrocas = async () => {
-    await db.collection('trocas').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('trocas').get().then(data => {
+        data.docs.forEach(element => {
             const troca = element.data();
             troca.id = element.id;
             trocas.push(troca);
@@ -123,14 +123,14 @@ const pegarTodasTrocas = async () => {
 }
 
 const adicionarQuest = async (nome, ponto, descricao) => {
-    const questObj = {nome, ponto, descricao}
+    const questObj = { nome, ponto, descricao }
     await db.collection('quests').add(questObj);
 }
 
 const pegarTodasQuestsSemanais = async () => {
     questsSemana = [];
-    await db.collection('questsSemana').get().then(data =>{
-        data.docs.forEach(element =>{
+    await db.collection('questsSemana').get().then(data => {
+        data.docs.forEach(element => {
             const quest = element.data();
             quest.id = element.id;
             questsSemana.push(quest);
@@ -139,19 +139,19 @@ const pegarTodasQuestsSemanais = async () => {
 }
 
 const adicionarEvento = async (nome, ponto) => {
-    const eventoObj = {nome, ponto}
+    const eventoObj = { nome, ponto }
     await db.collection('eventos').add(eventoObj);
 }
 
 const adicionarEventoVencedor = async (evento, jogador) => {
-    const evntoVencedorObj = {evento, jogador}
+    const evntoVencedorObj = { evento, jogador }
     await db.collection('eventoVencedores').add(evntoVencedorObj);
 }
 
 const deletarTroca = async (itemTroca) => {
     let trocaFiltro = trocas.filter((troca) => troca.id == itemTroca.id);
     trocas.forEach((element, index) => {
-        if(trocaFiltro[0].id == element.id) {
+        if (trocaFiltro[0].id == element.id) {
             trocas.splice(index, 1);
         }
     });
@@ -170,33 +170,33 @@ const criarGraficoSkill = () => {
     const ctx = document.getElementById('graficoSkill');
 
     new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Level', 'Melee', 'Dist', 'Magic', 'Defence'],
-        datasets: [{
-        label: 'Skills',
-        data: [usuarioLogado.level, usuarioLogado.melee, usuarioLogado.distance, usuarioLogado.magic, usuarioLogado.defence],
-        borderWidth: 1
-        }]
-    },
-    options: {
-        animation: false,
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            enabled: true
-          }
-        }
-      },
+        type: 'bar',
+        data: {
+            labels: ['Level', 'Melee', 'Dist', 'Magic', 'Defence'],
+            datasets: [{
+                label: 'Skills',
+                data: [usuarioLogado.level, usuarioLogado.melee, usuarioLogado.distance, usuarioLogado.magic, usuarioLogado.defence],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            animation: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        },
     });
 }
 
 const checarUsuarioLogado = () => {
-    if(usuarioLogado != null) {
+    if (usuarioLogado != null) {
         let jogadorFiltroLogado = jogadores.filter((jogador) => jogador.id == usuarioLogado);
-        if(jogadorFiltroLogado.length == 0) {
+        if (jogadorFiltroLogado.length == 0) {
             Swal.fire({
                 title: 'Falha recuperar usuário',
                 text: 'Usuário logado não existe!',
@@ -248,7 +248,7 @@ const criarComponenteListaQuest = (questComponente) => {
 const deletarQuest = (questComponente) => {
     let questFiltro = quests.filter((quest) => quest.id == questComponente.id);
     quests.forEach((element, index) => {
-        if(questFiltro[0].id == element.id) {
+        if (questFiltro[0].id == element.id) {
             quests.splice(index, 1);
         }
     });
@@ -264,7 +264,7 @@ const preencherListaTrocas = () => {
 
 const preencherCampos = () => {
     totalPontosquestsPlayer = 0;
-    if(usuarioLogado.questsFinalizadas.length > 0) {
+    if (usuarioLogado.questsFinalizadas.length > 0) {
         usuarioLogado.questsFinalizadas.forEach(element => {
             totalPontosquestsPlayer = totalPontosquestsPlayer + element.ponto;
         });
@@ -303,7 +303,7 @@ const listarContribuicoes = () => {
     let listaContribuicao = document.querySelector("#listaContribuicao");
     listaContribuicao.innerHTML = '';
     jogadores.forEach(element => {
-        if(element.valorColeta > 0) {
+        if (element.valorColeta > 0) {
             listaContribuicao.append(criarComponenteListaContribuicao(element));
         }
     });
@@ -338,7 +338,7 @@ const listarJogadorEventoVencedorSelect = () => {
 const listarEventosEventoVencedorSelect = () => {
     let eventoSelectVencedor = document.querySelector('#eventoSelectVencedor');
     eventoSelectVencedor.innerHTML = '';
-    
+
     eventos.forEach(element => {
         var optionSelect = document.createElement('option');
         optionSelect.value = element.id;
@@ -356,7 +356,7 @@ const listarQuests = () => {
 
 const listarJogadoresSelectColeta = () => {
     let selectJogadoresModal = document.querySelector('#jogadorColetaSelect');
-    
+
     jogadores.forEach(element => {
         var optionSelect = document.createElement('option');
         optionSelect.value = element.id;
@@ -368,7 +368,7 @@ const listarJogadoresSelectColeta = () => {
 const salvarColeta = () => {
     let jogadorColetaSelect = document.querySelector('#jogadorColetaSelect');
     let valorInputColeta = document.querySelector('#valorInputColeta');
-    
+
     const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorColetaSelect.value);
     resultJogador[0].valorColeta = parseInt(resultJogador[0].valorColeta) + parseInt(valorInputColeta.value);
     atualizarJogador(resultJogador[0]);
@@ -391,22 +391,22 @@ const salvarEventoVencedor = () => {
     let jogadorEventoSelectVencedor = document.querySelector('#jogadorEventoSelectVencedor');
     const resultEvento = eventos.filter((evento) => evento.id == eventoSelectVencedor.value);
     const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorEventoSelectVencedor.value);
-    
-    if(resultEvento[0].nome == "Quiz") {
+
+    if (resultEvento[0].nome == "Quiz") {
         resultJogador[0].quiz = resultJogador[0].quiz + resultEvento[0].ponto;
         Swal.fire({
             title: 'Vencedor registrado com sucesso!',
             icon: 'success',
             confirmButtonText: 'ok'
         });
-    } else if(resultEvento[0].nome == "Esconde-esconde") {
+    } else if (resultEvento[0].nome == "Esconde-esconde") {
         resultJogador[0].escondeEsconde = resultJogador[0].escondeEsconde + resultEvento[0].ponto;
         Swal.fire({
             title: 'Vencedor registrado com sucesso!',
             icon: 'success',
             confirmButtonText: 'ok'
         });
-    } else if(resultEvento[0].nome == "Batalha de criaturas") {
+    } else if (resultEvento[0].nome == "Batalha de criaturas") {
         Swal.fire({
             title: 'Batalha',
             icon: 'success',
@@ -429,7 +429,7 @@ const salvarEventoVencedor = () => {
 
 const salvarEvento = () => {
     let nomeInputPontoEvento = document.querySelector('#nomeInputPontoEvento');
-    let valorInputPontoEvento = document.querySelector('#valorInputPontoEvento');    
+    let valorInputPontoEvento = document.querySelector('#valorInputPontoEvento');
 
     adicionarEvento(nomeInputPontoEvento.value, parseInt(valorInputPontoEvento.value));
     Swal.fire({
@@ -450,8 +450,8 @@ const cadastrarQuest = () => {
     let nomeQuest = document.querySelector("#nomeInputCadastroQuest");
     let pontosQuest = document.querySelector("#pontosInputCadastroQuest");
     let descricaoQuest = document.querySelector("#descricaoInputCadastroQuest");
-    
-    if(nomeQuest.value != "" && pontosQuest.value != "" && descricaoQuest.value != "") {
+
+    if (nomeQuest.value != "" && pontosQuest.value != "" && descricaoQuest.value != "") {
         quests = [];
         adicionarQuest(nomeQuest.value, parseInt(pontosQuest.value), descricaoQuest.value);
         pegarTodasQuests().then(() => {
@@ -498,7 +498,7 @@ const registrarVencedor = () => {
 
 const calcularPontosQuests = (jogadorCorrente) => {
     pontosTotais = 0;
-    if(jogadorCorrente.questsFinalizadas.length > 0) {
+    if (jogadorCorrente.questsFinalizadas.length > 0) {
         jogadorCorrente.questsFinalizadas.forEach(element => {
             pontosTotais = pontosTotais + element.ponto;
         });
@@ -507,7 +507,7 @@ const calcularPontosQuests = (jogadorCorrente) => {
 }
 
 const shuffle = (v) => {
-    for(var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
+    for (var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
     return v;
 };
 
@@ -539,7 +539,7 @@ const verificarJogadoresVencedoresEventos = () => {
         jogadorObj = {
             nick: element.nick,
             totalPontos: element.pvp + element.escondeEsconde + element.quiz
-        }; 
+        };
         jogadoresPontos.push(jogadorObj);
     });
     jogadoresPontos = jogadoresPontos.sort((a, b) => {
@@ -577,10 +577,10 @@ const calcularPontos = () => {
             });
             pegarTodosJogadores().then(() => {
                 jogadores.forEach(element => {
-                    if(element.valorColeta >= 400000) {
+                    if (element.valorColeta >= 300000) {
                         pontosSkill = 0;
                         pontosSkill = (element.defence + element.distance + element.level + element.magic + element.melee) / 200;
-                        if(pontosSkill < 1) {
+                        if (pontosSkill < 1) {
                             pontosSkill = 1;
                         }
                         pontos = Math.round(pontosSkill);
@@ -604,15 +604,15 @@ const calcularPontos = () => {
 }
 
 const verificarPermissoes = () => {
-    btnRegistrarColeta.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
-    sessaoQuest.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    btnRegistrarColeta.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
+    sessaoQuest.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
     sessaoTrocas.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
-    sessaoEventos.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
-    sessaoVencedores.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
-    sessaoCadastrarJogador.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none'; 
+    sessaoEventos.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
+    sessaoVencedores.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
+    sessaoCadastrarJogador.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
     sessaoCadastroItem.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'block' : 'none';
     btnCalcularPontos.style.display = usuarioLogado != null && adms[0].includes(usuarioLogado.id) ? 'inline' : 'none';
-    if(usuarioLogado != null && adms[0].includes(usuarioLogado.id)) {
+    if (usuarioLogado != null && adms[0].includes(usuarioLogado.id)) {
         pegarTodasTrocas().then(() => {
             preencherListaTrocas();
         });
@@ -622,31 +622,62 @@ const verificarPermissoes = () => {
 const cadastrarJogador = () => {
     let nickCadastro = document.querySelector("#nickInputCadastroJogador").value;
     let senhaCadastro = document.querySelector("#senhaInputCadastroJogador").value;
-    let levelCadastro = parseInt(document.querySelector("#levelInputCadastroJogador").value);
-    let meleeCadastro = parseInt(document.querySelector("#meleeInputCadastroJogador").value);
-    let distanciaCadastro = parseInt(document.querySelector("#distanciaInputCadastroJogador").value);
-    let magiaCadastro = parseInt(document.querySelector("#magiaInputCadastroJogador").value);
-    let defesaCadastro = parseInt(document.querySelector("#defesaInputCadastroJogador").value);
+    let levelCadastro = document.querySelector("#levelInputCadastroJogador").value;
+    let meleeCadastro = document.querySelector("#meleeInputCadastroJogador").value;
+    let distanciaCadastro = document.querySelector("#distanciaInputCadastroJogador").value;
+    let magiaCadastro = document.querySelector("#magiaInputCadastroJogador").value;
+    let defesaCadastro = document.querySelector("#defesaInputCadastroJogador").value;
     let questsFinalizadas = [];
     let criaturas = [];
     let xpQuest = 0;
     let pontosAtributos = 0;
 
-    if(nickCadastro != "" && senhaCadastro != "" && levelCadastro != "" && meleeCadastro != "" && distanciaCadastro != "" && magiaCadastro != "" && defesaCadastro != "") {
-        // defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests
-        adicionarJogador(defesaCadastro, distanciaCadastro, 0, levelCadastro, magiaCadastro, meleeCadastro, nickCadastro, 0, 0, 1, senhaCadastro, false, 0, questsFinalizadas, 1, 0, criaturas, xpQuest, pontosAtributos);
-        Swal.fire({
-            title: 'Jogador cadastrado com sucesso',
-            icon: 'success',
-            confirmButtonText: 'ok'
-        });
-    } else {
+    if (nickCadastro === "" && senhaCadastro === "") {
         Swal.fire({
             title: 'Falha ao cadastrar o jogador',
             text: 'Todos os campos são obrigatórios, favor preenche-los!',
             icon: 'error',
             confirmButtonText: 'ok'
         });
+    } else {
+        pegarTodosJogadores().then(() => {
+            if(jogadores.filter(a => a.nick == nickCadastro).length > 0) {
+                Swal.fire({
+                    title: 'Falha ao cadastrar o jogador',
+                    text: 'Este nick já existe!',
+                    icon: 'error',
+                    confirmButtonText: 'ok'
+                });
+            } else {
+                // defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests
+                adicionarJogador(
+                    defesaCadastro === "" ? 0 : parseInt(defesaCadastro),
+                    distanciaCadastro === "" ? 0 : parseInt(distanciaCadastro),
+                    0,
+                    levelCadastro === "" ? 0 : parseInt(levelCadastro),
+                    magiaCadastro === "" ? 0 : parseInt(magiaCadastro),
+                    meleeCadastro === "" ? 0 : parseInt(meleeCadastro),
+                    nickCadastro,
+                    0,
+                    0,
+                    1,
+                    senhaCadastro,
+                    false,
+                    0,
+                    questsFinalizadas,
+                    1,
+                    0,
+                    criaturas,
+                    xpQuest,
+                    pontosAtributos);
+                Swal.fire({
+                    title: 'Jogador cadastrado com sucesso',
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                });
+            }
+        });
+        
     }
 }
 
@@ -655,7 +686,7 @@ const cadastrarItem = () => {
     let pontosInputCadastroItem = document.querySelector("#pontosInputCadastroItem").value;
     let linkDriveInputCadastroItem = document.querySelector("#linkDriveInputCadastroItem").value;
 
-    if(nomeInputCadastroItem != "" && pontosInputCadastroItem != "" && linkDriveInputCadastroItem != "") {
+    if (nomeInputCadastroItem != "" && pontosInputCadastroItem != "" && linkDriveInputCadastroItem != "") {
         adicionarItem(nomeInputCadastroItem, parseInt(pontosInputCadastroItem), linkDriveInputCadastroItem);
         Swal.fire({
             title: 'Item cadastrado com sucesso',
@@ -680,11 +711,11 @@ const main = () => {
         criarGraficoSkill();
         listarContribuicoes();
     });
-    
+
     pegarTodosAdms().then(() => {
         verificarPermissoes();
     });
-    
+
     pegarTodasQuests().then(() => {
         listarQuests();
     });
