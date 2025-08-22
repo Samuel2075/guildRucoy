@@ -368,9 +368,26 @@ const listarJogadoresSelectColeta = () => {
 const salvarColeta = () => {
     let jogadorColetaSelect = document.querySelector('#jogadorColetaSelect');
     let valorInputColeta = document.querySelector('#valorInputColeta');
+    const regex = /k/gi;
+    let count = 0;
+    let result;
+    let valorColetaSomatorio = 0;
+    valorColetaSomatorio = parseInt(valorInputColeta.value);
+    
+    while ((result = regex.exec(valorInputColeta.value)) !== null) {
+        count++;
+    }
+
+    if (count > 3) {
+        count = 3;    
+    }
+    
+    if(count > 0) {
+        valorColetaSomatorio = count * 1000 * valorColetaSomatorio;
+    }
 
     const resultJogador = jogadores.filter((jogador) => jogador.id == jogadorColetaSelect.value);
-    resultJogador[0].valorColeta = parseInt(resultJogador[0].valorColeta) + parseInt(valorInputColeta.value);
+    resultJogador[0].valorColeta = parseInt(resultJogador[0].valorColeta) + valorColetaSomatorio;
     atualizarJogador(resultJogador[0]);
     Swal.fire({
         title: 'Coleta atualizada com sucesso',
