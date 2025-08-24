@@ -4918,6 +4918,8 @@ textarea.form-control-lg {
 }
 
 .list-group-item {
+  background: linear-gradient(180deg, rgba(22, 20, 16, 0.8), rgba(22, 20, 16, 0.6)) !important;
+    color: white !important;
   position: relative;
   display: block;
   padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
@@ -11686,11 +11688,324 @@ textarea.form-control-lg {
 
 .medieval-card .card-text {
   font-family: "Lora", serif;
-  color: #3e2723;
+  color: rgb(240, 229, 201);
   margin-bottom: 8px;
 }
 
 #item-price {
   font-weight: bold;
-  color: #8b0000; /* tom de vermelho nobre */
+  color: #fff700; /* tom de vermelho nobre */
 }
+
+/* === Tema Medieval para a Guild === */
+:root{
+  --guild-bg-1: #0f0e0c;          /* fundo profundo */
+  --guild-bg-2: #1b1814;          /* sobreposições/espaços */
+  --guild-ink:   #e8e0cc;         /* texto claro "pergaminho" */
+  --guild-gold:  #c8a14a;         /* dourado queimado */
+  --guild-gold-2:#e0b861;
+  --guild-red:   #b14a3f;
+  --guild-iron:  #3c3a37;         /* “metal” dos cards */
+  --guild-shadow:#00000099;
+}
+
+/* Ajuste para navbar fixa não sobrepor conteúdo */
+body{
+  background: radial-gradient(1200px 800px at 50% -10%, #1f1a14 0%, var(--guild-bg-1) 60%, #0a0a0a 100%);
+  color: var(--guild-ink);
+}
+
+/* Navbar: vidro envelhecido */
+.navbarFixed.navbar{
+  background: linear-gradient(180deg, rgba(22,20,16,0.8), rgba(22,20,16,0.6)) !important;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #ffffff10;
+  box-shadow: 0 6px 24px var(--guild-shadow);
+}
+.alignNav{ gap: 16px !important; }
+.navH6{ letter-spacing: .5px; color: #f1e9d6; }
+
+/* Avatar do perfil com aro dourado */
+.profile{
+  border-radius: 12px;
+  border: 2px solid var(--guild-gold);
+  background: #fff;
+}
+
+/* Hero/Banner temático */
+header{
+  position: relative;
+  isolation: isolate;
+}
+#banner{
+  padding-top: 80px;
+}
+#banner h1{
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 0 #000;
+}
+#banner p{
+  max-width: 780px;
+  margin: 0 auto 18px auto;
+  opacity: .9;
+}
+
+/* Botões com vibe MMORPG */
+#banner .btn,
+#questBtn, #btnLogin, #skills, #deslogar,
+.btn{
+  border-radius: 12px;
+  border: 1px solid #000;
+  padding: 10px 16px;
+  text-decoration: none !important;
+  font-weight: 700;
+  letter-spacing: .3px;
+  transition: transform .1s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+#banner .btn.btn-primary,
+#questBtn, #btnLogin, #skills{
+  background: linear-gradient(180deg, var(--guild-gold-2), var(--guild-gold));
+  color: #2a2314;
+  box-shadow: 0 8px 18px #00000080, inset 0 1px 0 #fff4;
+}
+#banner .btn.btn-primary:hover,
+#questBtn:hover, #btnLogin:hover, #skills:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px #000000a0, inset 0 1px 0 #fff6;
+}
+#deslogar.btn-danger{
+  background: linear-gradient(180deg, #cf6f64, var(--guild-red));
+  color: #fff;
+  box-shadow: 0 8px 18px #00000080, inset 0 1px 0 #fff2;
+}
+
+/* Cartões padrão “pergaminho” */
+.card.bg-light{
+  background: linear-gradient(180deg, #231e18, #191510) !important;
+  border: 1px solid #ffffff1a !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 28px var(--guild-shadow);
+  color: var(--guild-ink);
+}
+
+/* Títulos das seções */
+h2.fs-4.fw-bold,
+section h2{
+  color: #f2e7cc;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  /* border-bottom: 1px solid #ffffff1a; */
+  padding-bottom: 6px;
+}
+
+/* Seção de Itens a Venda (fundo de madeira leve) */
+section[style*="burlywood"]{
+  background: linear-gradient(180deg, #2b231b, #221c15) !important;
+  border-top: 1px solid #ffffff10;
+  border-bottom: 1px solid #00000066;
+}
+section[style*="burlywood"] h2{ color: #f3e6c8; }
+section[style*="burlywood"] span{ color: #e6dcc7; opacity: .9; }
+
+/* Grid de cards gerados via JS */
+#itensVendaCard .card,
+#itensCard .card{
+  background: linear-gradient(180deg, #2a2622, #1e1c18);
+  border: 1px solid #ffffff12;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px var(--guild-shadow), inset 0 0 0 1px #00000066;
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+#itensVendaCard .card:hover,
+#itensCard .card:hover{
+  transform: translateY(-3px);
+  border-color: #ffffff22;
+  box-shadow: 0 16px 30px #000000cc;
+}
+#itensVendaCard .card .card-body,
+#itensCard .card .card-body{
+  padding: 14px 14px 16px 14px;
+}
+#itensVendaCard .card-title,
+#itensCard .card-title{
+  font-weight: 700;
+  color: #f0e5c9;
+}
+#itensVendaCard .card-text strong,
+#itensCard .card-text strong{
+  color: var(--guild-gold-2);
+}
+
+/* Rank */
+.rankbox{
+  display: block; /* deixo visível por padrão; seu JS pode esconder/mostrar */
+}
+.card-body-center{
+  align-items: stretch;
+}
+.lable-select{
+  color: #e7dcc6;
+  font-weight: 600;
+}
+#tipoRank, #tipoSkill{
+  background: #15110d;
+  color: #e7dcc6;
+  border: 1px solid #ffffff1a;
+}
+#listaRank.list-group{
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px var(--guild-shadow);
+}
+#listaRank .list-group-item{
+  background: linear-gradient(180deg, #24201a, #1c1813);
+  color: #e8e0cc;
+  border-color: #ffffff10;
+}
+#listaRank .list-group-item + .list-group-item{
+  border-top-color: #ffffff0f;
+}
+
+/* Modal de Login – textura de pergaminho leve */
+#modalLogin .modal-content{
+  background: linear-gradient(180deg, #2b241b, #1d1812);
+  color: #f3ead3;
+  border: 1px solid #ffffff18;
+  box-shadow: 0 20px 40px var(--guild-shadow);
+  border-radius: 16px;
+}
+#modalLogin .modal-header{
+  border-bottom: 1px solid #ffffff12;
+}
+#modalLogin .close{
+  color: #f3ead3;
+  opacity: .7;
+}
+#modalLogin .form-control{
+  background: #15110d;
+  color: #f3ead3;
+  border: 1px solid #ffffff24;
+}
+
+/* Footer mais discreto */
+footer.bg-dark{
+  background: linear-gradient(180deg, #161310, #0e0d0b) !important;
+  border-top: 1px solid #ffffff12;
+}
+
+/* Utilidades e responsivo */
+.btnPadding{ margin-left: 6px; }
+.cardCriatura{ margin-top: 36px !important; }
+.liListaTroca{ gap: 12px; }
+
+@media (max-width: 991.98px){
+  .alignNav{ justify-content: center !important; }
+  #banner .btn{ width: 100%; margin-bottom: 8px; }
+  .alinhamentoProfile a{ gap: 8px; }
+}
+@media (max-width: 575.98px){
+  #banner h1{ font-size: 1.6rem; }
+}
+
+body{
+  background: url('../assets/img/bgs/bg-parchment.png') center/cover fixed, #0f0e0c;
+  color: var(--guild-ink);
+}
+
+/* Espaçamento consistente entre itens da navbar */
+.alignNav{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botões quando estiverem DENTRO da navbar */
+.navbarFixed #questBtn,
+.navbarFixed #skills,
+.navbarFixed #deslogar{
+  margin: 0 !important;                 /* zera margens antigas */
+  padding: 6px 12px !important;         /* compacto para nav */
+  border-radius: 10px !important;
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.2;
+  border: 1px solid #000;
+  box-shadow: none !important;          /* sem sombra grande na nav */
+  transform: none !important;
+  transition: filter .15s ease, opacity .15s ease;
+}
+
+/* Cores/estilo seguindo o tema (dourado e vermelho) */
+.navbarFixed #questBtn,
+.navbarFixed #skills{
+  background: linear-gradient(180deg, #e0b861, #c8a14a);
+  color: #2a2314 !important;
+}
+.navbarFixed #deslogar{
+  background: linear-gradient(180deg, #cf6f64, #b14a3f);
+  color: #fff !important;
+}
+
+/* Hover/focus discretos na navbar */
+.navbarFixed #questBtn:hover,
+.navbarFixed #skills:hover,
+.navbarFixed #deslogar:hover{
+  filter: brightness(1.06);
+}
+
+/* Estados de foco para acessibilidade */
+.navbarFixed #questBtn:focus-visible,
+.navbarFixed #skills:focus-visible,
+.navbarFixed #deslogar:focus-visible{
+  outline: 2px solid #fff3;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0006;
+}
+
+/* Em telas menores: quebrar linha e compactar mais */
+@media (max-width: 991.98px){
+  .alignNav{ flex-wrap: wrap; gap: 8px; }
+  .navbarFixed #questBtn,
+  .navbarFixed #skills,
+  .navbarFixed #deslogar{
+    padding: 6px 10px !important;
+    font-size: .95rem;
+  }
+}
+
+.nav-actions {
+  display: flex;
+  flex-direction: row !important; /* muda de coluna para linha */
+  justify-content: center;        /* centraliza, pode trocar por space-around/space-between */
+  align-items: center;
+  gap: 10px;                      /* espaçamento entre os botões */
+}
+
+.nav-actions .btn--nav {
+  margin: 0 !important;
+  white-space: nowrap;            /* evita quebrar texto */
+}
+
+/* Botões padrão da navbar iguais aos do index */
+.btn--nav {
+  margin: 0 !important;
+  padding: 6px 14px !important;
+  border-radius: 10px !important;
+  font-weight: 700;
+  letter-spacing: .3px;
+  line-height: 1.2;
+  border: 1px solid #000;
+  background: linear-gradient(180deg, #e0b861, #c8a14a); /* dourado igual ao index */
+  color: #2a2314 !important;
+  box-shadow: 0 4px 10px #00000066, inset 0 1px 0 #fff4;
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.btn--nav:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+

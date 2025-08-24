@@ -21,3 +21,142 @@
 .pontosTexto {
     margin: 0;
 }
+
+/* ---- Força TODAS as .btn-primary a ficarem douradas (override BS4) ---- */
+body .btn.btn-primary,
+body .btn.btn-primary:focus,
+body .btn.btn-primary:active,
+body .btn.btn-primary.active,
+body .show > .btn.btn-primary.dropdown-toggle {
+  background: linear-gradient(180deg, #e0b861, #c8a14a) !important;
+  color: #2a2314 !important;
+  border: 1px solid #000 !important;
+  box-shadow: 0 4px 10px #00000066, inset 0 1px 0 #ffffff44 !important;
+  text-shadow: none !important;
+}
+
+/* Hover/focus */
+body .btn.btn-primary:hover,
+body .btn.btn-primary:focus {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* Active (clicado) */
+body .btn.btn-primary:active {
+  transform: none;
+  box-shadow: 0 2px 6px #00000066, inset 0 1px 0 #ffffff22 !important;
+}
+
+/* Disabled mantém o dourado */
+body .btn.btn-primary.disabled,
+body .btn.btn-primary:disabled {
+  opacity: .7 !important;
+  background: linear-gradient(180deg, #e0b861, #c8a14a) !important;
+  color: #2a2314 !important;
+}
+
+/* (opcional) borda e raio coerentes com o tema */
+body .btn {
+  border-radius: 10px !important;
+  font-weight: 700;
+  letter-spacing: .3px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ====== QUEST HUB (tema) ====== */
+:root{
+  --guild-ink:#e8e0cc;
+  --guild-gold:#c8a14a;
+  --guild-gold-2:#e0b861;
+  --guild-iron:#3c3a37;
+}
+
+/* Header/Banner da página */
+header .rounded-3{
+  color: var(--guild-ink);
+  border-radius: 20px !important;
+}
+header h1{ text-transform: uppercase; letter-spacing:.8px; }
+
+/* Barra de XP da guild */
+#xpGuild{
+  height: 12px;
+  background: #14110d;
+  border: 1px solid #ffffff1a;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px #0008;
+}
+#xpGuild .progress-bar{
+  background: linear-gradient(180deg,#4ade80,#16a34a) !important; /* verde */
+  box-shadow: 0 2px 8px #0008, inset 0 1px 0 #fff3;
+}
+
+/* Títulos nesta página */
+section h4, section h5{ 
+  color:#f2e7cc;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+}
+
+/* ====== LISTA DE QUESTS (accordion/card) ====== */
+#accordion .card{
+  background: linear-gradient(180deg,#2a2622,#1e1c18);
+  border:1px solid #ffffff16;
+  border-left:4px solid var(--guild-gold);
+  border-radius:14px;
+  color:var(--guild-ink);
+  box-shadow: 0 12px 28px #00000099, inset 0 0 0 1px #0006;
+  overflow:hidden;
+}
+#accordion .card + .card{ margin-top:12px; }
+#accordion .card-header{
+  background:transparent;
+  border-bottom:1px solid #ffffff12;
+  padding:10px 14px;
+}
+#accordion .btn-link{
+  color:#f3ead3 !important;
+  font-weight:800;
+  text-decoration:none !important;
+  letter-spacing:.3px;
+}
+#accordion .card-body{
+  color:#e6dcc7;
+  padding:14px;
+}
+
+/* meta info dentro do header do card (dificuldade, classe, pontos) */
+.quest-meta{ display:flex; gap:8px; flex-wrap:wrap; }
+.badge-quest{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 8px; border-radius:999px; font-weight:700; font-size:.85rem;
+  border:1px solid #000; color:#1f160c; 
+  background: linear-gradient(180deg,var(--guild-gold-2),var(--guild-gold));
+}
+.badge-class-archer{ background:linear-gradient(180deg,#6ee7b7,#34d399); color:#0b1b12; }
+.badge-class-warrior{ background:linear-gradient(180deg,#fca5a5,#ef4444); color:#2a0e0e; }
+.badge-class-mage{ background:linear-gradient(180deg,#93c5fd,#3b82f6); color:#0a1630; }
+
+/* ====== FILTROS DE QUEST (opcional, apenas visual) ====== */
+.quest-filters{
+  display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 18px 0;
+}
+.quest-filter{
+  padding:6px 12px; border-radius:999px; border:1px solid #000;
+  background:linear-gradient(180deg,#2b241b,#1d1812); color:#f3ead3;
+}
+.quest-filter.active{
+  background:linear-gradient(180deg,var(--guild-gold-2),var(--guild-gold));
+  color:#2a2314;
+}
+
+/* Botões (mantém dourado global) */
+body .btn.btn-primary{ 
+  background: linear-gradient(180deg,#e0b861,#c8a14a) !important;
+  color:#2a2314 !important; border:1px solid #000 !important;
+  box-shadow:0 4px 10px #00000066, inset 0 1px 0 #ffffff44 !important;
+  border-radius:10px !important; font-weight:700; letter-spacing:.3px;
+}
+

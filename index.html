@@ -18,25 +18,24 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarFixed">
             <div class="container px-lg-5 alignNav">
-                <div class="col-md-4">
+                <div class="col-md-4" style="display: flex;flex-direction: column-reverse;align-items: center;">
                     <h6 id="pontosH6" class="navH6"></h6>
-                </div>
-                <div class="col-md-8 alinhamentoProfile">
-                    <a id="linkProfile" href="profile.html" style="text-decoration: none;display: flex;align-items: center;">
-                        <img class="profile" style="width: 50px;padding: 5px;background-color: white;" src="assets/img/profile.png" alt="" srcset="">
+                        <a id="linkProfile" href="profile.html" style="text-decoration: none;display: flex;align-items: center;">
+                        <img class="profile" style="width: 50px;padding: 5px;background-color: white;" src="assets/img/profile.png" alt="">
                         <h6 id="nickH6" class="navH6"></h6>
                     </a>
                 </div>
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Troca</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Missões</a></li>
-                    </ul>
-                </div> -->
+
+                <!-- Bloco central com botões -->
+                <div class="col-md-8 d-flex nav-actions">
+                    <a class="btn btn-primary btn--nav" id="questBtn" href="quests.html">Quests</a>
+                    <button type="button" id="btnLogin" class="btn btn-primary btn--nav" data-toggle="modal" data-target="#modalLogin">Login</button>
+                    <a id="skills" class="btn btn-primary btnPadding btn--nav" href="skill.html">Atualizar Skills</a>
+                    <button id="deslogar" onclick="deslogarUsuario()" class="btn btn-danger btnPadding btn--nav">Deslogar</button>
+                </div>
             </div>
         </nav>
+
         <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -69,14 +68,14 @@
         <!-- Header-->
         <header class="py-5">
             <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                <div class="p-4 p-lg-5 rounded-3 text-center">
                     <div class="m-4 m-lg-5" id="banner">
                         <h1 class="display-5 fw-bold">Bem vindo a Guild Sociedade Revolucionária!</h1>
                         <p class="fs-4">Este site tem como objetivo facilitar o acesso de vocês aos itens do game. Criei um sistema de pontos para que sejam trocados por itens.</p>
-                        <a class="btn btn-primary" id="questBtn" href="quests.html">Quests</a>
+                        <!-- <a class="btn btn-primary" id="questBtn" href="quests.html">Quests</a>
                         <button type="button" id="btnLogin" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Login</button>
                         <a id="skills" class="btn btn-primary btnPadding" href="skill.html">Atualizar Skills</a>
-                        <button id="deslogar" onclick="deslogarUsuario()" class="btn btn-danger btnPadding">Deslogar</button>
+                        <button id="deslogar" onclick="deslogarUsuario()" class="btn btn-danger btnPadding">Deslogar</button> -->
                         <!-- <a id="criaturas" class="btn btn-primary btnPadding" href="criaturas.html">Criaturas</a> -->
                     </div>
                 </div>
@@ -86,7 +85,7 @@
         <section class="pt-4">
             <div class="container px-lg-5">
                 <div class="col-lg-12 col-xxl-12 mb-5">
-                    <div class="card bg-light border-0 h-100">
+                    <div class="card h-100" style="background-color: #f0f8ff00;border: none;">
                         <h2 class="fs-4 fw-bold" style="text-align: center;margin-top: 10px;">Rank</h2>
                         <div class="card-body card-body-center text-center p-4 p-lg-5 pt-0 pt-lg-0">
                             <label class="lable-select" style="margin-bottom: 5px;" for="tipoRank">Tipo do rank</label>

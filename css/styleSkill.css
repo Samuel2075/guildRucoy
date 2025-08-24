@@ -53,3 +53,28 @@ body{
     align-items: center;
     justify-content: space-evenly;
 }
+
+/* Botões principais (Skills) no padrão dourado do site */
+body .btn.btn-primary {
+  background: linear-gradient(180deg, #e0b861, #c8a14a) !important;
+  color: #2a2314 !important;
+  border: 1px solid #000 !important;
+  border-radius: 10px !important;
+  font-weight: 700;
+  letter-spacing: .3px;
+  line-height: 1.2;
+  box-shadow: 0 4px 10px #00000066, inset 0 1px 0 #ffffff44 !important;
+  text-shadow: none !important;
+  padding: 8px 18px;
+}
+
+/* Hover e clique */
+body .btn.btn-primary:hover,
+body .btn.btn-primary:focus {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+body .btn.btn-primary:active {
+  transform: none;
+  box-shadow: 0 2px 6px #00000066, inset 0 1px 0 #ffffff22 !important;
+}

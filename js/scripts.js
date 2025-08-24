@@ -259,7 +259,7 @@ const criarComponenteItem = (itemElement) => {
     divColLg6.className = 'col-md-6 col-xxl-4 mb-5';
     divCard.className = 'card bg-light border-0 h-100';
     divCardBody.className = 'card-body text-center p-4 p-lg-5 pt-0 pt-lg-0';
-    divFeature.className = 'feature bg-gradient text-white rounded-3 mb-4 mt-n4';
+    divFeature.className = 'feature bg-gradient text-white rounded-3 mb-4 mt-4';
     h2Pontos.className = 'fs-4 fw-bold';
 
     h2Pontos.innerText = 'Pontos: ' + itemElement.ponto;

@@ -176,27 +176,53 @@ const criarGraficoSkill = () => {
     const ctx = document.getElementById('graficoSkill');
 
     new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Level', 'Melee', 'Dist', 'Magic', 'Defence'],
-            datasets: [{
-                label: 'Skills',
-                data: [usuarioLogado.level, usuarioLogado.melee, usuarioLogado.distance, usuarioLogado.magic, usuarioLogado.defence],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            animation: false,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    enabled: true
-                }
+    type: 'bar',
+    data: {
+        labels: ['Level', 'Melee', 'Dist', 'Magic', 'Defence'],
+        datasets: [{
+            label: 'Skills',
+            data: [
+                usuarioLogado.level, 
+                usuarioLogado.melee, 
+                usuarioLogado.distance, 
+                usuarioLogado.magic, 
+                usuarioLogado.defence
+            ],
+            borderWidth: 1,
+            backgroundColor: 'rgba(0, 123, 255, 0.5)' // cor das barras (opcional)
+        }]
+    },
+    options: {
+        animation: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                enabled: true
             }
         },
-    });
+        scales: {
+            x: {
+                ticks: {
+                    color: "#fff" // letras brancas no eixo X
+                },
+                grid: {
+                    color: "rgba(255,255,255,0.2)" // linhas da grade discretas
+                }
+            },
+            y: {
+                ticks: {
+                    color: "#fff" // letras brancas no eixo Y
+                },
+                grid: {
+                    color: "rgba(255,255,255,0.2)"
+                }
+            }
+        }
+    },
+});
+
 }
 
 const checarUsuarioLogado = () => {
