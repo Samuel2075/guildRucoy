@@ -11650,12 +11650,42 @@ textarea.form-control-lg {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    padding-bottom: 10px;
 }
 
-#itensVendaCard li {
-    background-color: black;
-    padding: 6px;
-    border-radius: 15px;
-    color: white;
-    margin: 5px;
+#itensVendaCard div {
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.medieval-card {
+  background: #f9f3e3; /* tom pergaminho */
+  border: 2px solid #6d4c41; /* marrom rústico */
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.medieval-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.medieval-title {
+  font-family: "Cinzel", serif; /* fonte temática medieval (Google Fonts) */
+  color: #4e342e;
+  text-align: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #8d6e63;
+  padding-bottom: 5px;
+}
+
+.medieval-card .card-text {
+  font-family: "Lora", serif;
+  color: #3e2723;
+  margin-bottom: 8px;
+}
+
+#item-price {
+  font-weight: bold;
+  color: #8b0000; /* tom de vermelho nobre */
 }

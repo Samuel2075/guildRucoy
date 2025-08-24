@@ -54,10 +54,11 @@ const pegarTodasVendas = async () => {
   try {
     const snap = await db.collection('itemsVenda').get();
     itensVenda = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
+    let html = "";
     itensVenda.forEach(venda => {
-      itensVendaCard.append(criarComponenteListaVendas(venda));
+      html += criarComponenteListaVendas(venda);
     });
+    itensVendaCard.innerHTML = html;
   } catch (e) {
     console.error('Erro ao carregar vendas:', e);
   }
@@ -289,17 +290,17 @@ const criarComponenteItem = (itemElement) => {
 }
 
 const criarComponenteListaVendas = (element) => {
-    var liObjeto = document.createElement('li');
-    var spanObjeto = document.createElement('span');
-
-    liObjeto.className = "list-group-item d-flex justify-content-between align-items-center";
-    liObjeto.innerText = `${element.item} / ${element.fundo} / ${element.usuario.nick} / ${element.preco}`;
-
-    spanObjeto.style.backgroundColor = 'blue';
-    spanObjeto.className = "badge badge-primary badge-pill";
-
-    liObjeto.append(spanObjeto);
-    return liObjeto;
+    const html = `<div class="col-md-3">
+  <div class="card shadow medieval-card">
+    <div class="card-body">
+      <h5 class="card-title medieval-title" id="item-name">${element.item}</h5>
+      <p class="card-text"><strong>Fundo:</strong> ${element.fundo}</p>
+      <p class="card-text"><strong>Vendedor:</strong> ${element.usuario.nick}</p>
+      <p class="card-text"><strong>Preço:</strong> <span id="item-price">${element.preco}</span></p>
+    </div>
+  </div>
+</div>`;
+    return html;
 }
 
 const trocarItem = async (item, pontoValor) => {
