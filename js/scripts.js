@@ -323,7 +323,7 @@ const criarComponenteListaVendas = (element) => {
   }
 
   const html = `
-  <div class="col-md-2">
+  <div class="col-md-3">
     <div class="card shadow medieval-card">
       <div class="card-body">
         <h5 class="card-title medieval-title" id="item-name">${element.item}</h5>
