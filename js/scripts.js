@@ -290,18 +290,42 @@ const criarComponenteItem = (itemElement) => {
 }
 
 const criarComponenteListaVendas = (element) => {
-    const html = `<div class="col-md-3">
-  <div class="card shadow medieval-card">
-    <div class="card-body">
-      <h5 class="card-title medieval-title" id="item-name">${element.item}</h5>
-      <p class="card-text"><strong>Fundo:</strong> ${element.fundo}</p>
-      <p class="card-text"><strong>Vendedor:</strong> ${element.usuario.nick}</p>
-      <p class="card-text"><strong>Preço:</strong> <span id="item-price">${element.preco}</span></p>
+  const numeroNormalizado = normalizarTelefoneBR(element?.usuario?.whats);
+  let botaoWhats = "";
+
+  if (numeroNormalizado) {
+    const texto = `Ola, ${element.usuario.nick}! Tenho interesse no item "${element.item}".`;
+    const url = `https://wa.me/${numeroNormalizado}?text=${encodeURIComponent(texto)}`;
+
+    botaoWhats = `
+      <button type="button" 
+              class="btn btn-success btn-sm mt-2"
+              onclick="window.open('${url}', '_blank')">
+        Mandar mensagem no WhatsApp
+      </button>`;
+  } else {
+    botaoWhats = `
+      <button class="btn btn-secondary btn-sm mt-2" disabled
+              title="Vendedor ainda nao cadastrou WhatsApp">
+        WhatsApp indisponivel
+      </button>`;
+  }
+
+  const html = `
+  <div class="col-md-3">
+    <div class="card shadow medieval-card">
+      <div class="card-body">
+        <h5 class="card-title medieval-title" id="item-name">${element.item}</h5>
+        <p class="card-text"><strong>Fundo:</strong> ${element.fundo}</p>
+        <p class="card-text"><strong>Vendedor:</strong> ${element.usuario.nick}</p>
+        <p class="card-text"><strong>Preco:</strong> <span id="item-price">${element.preco}</span></p>
+        ${botaoWhats}
+      </div>
     </div>
-  </div>
-</div>`;
-    return html;
-}
+  </div>`;
+  
+  return html;
+};
 
 const trocarItem = async (item, pontoValor) => {
 
@@ -420,11 +444,74 @@ const preencherCampos = () => {
     nickH6.innerText = usuarioLogado.nick;
 }
 
+function normalizarTelefoneBR(input) {
+  const d = String(input || '').replace(/\D/g, '');
+  if (!d) return null;
+
+  if (d.startsWith('55') && (d.length === 12 || d.length === 13)) return d;
+  if (d.length === 10 || d.length === 11) return '55' + d;
+
+  return null;
+}
+
+async function garantirWhatsNoFirestore(usuarioId) {
+  if (!usuarioId) return;
+
+  const ref = db.collection('jogadores').doc(usuarioId);
+  const snap = await ref.get();
+  if (!snap.exists) return;
+
+  const usuario = { id: snap.id, ...snap.data() };
+  const valido = !!normalizarTelefoneBR(usuario.whats);
+
+  if (valido) return;
+
+  const { value: tel, isConfirmed, isDismissed } = await Swal.fire({
+    title: 'Adicione seu WhatsApp',
+    html: `<p class="mb-2">Para que os compradores consigam falar com voce, cadastre seu numero (somente digitos).<br>Ex.: <code>35999998888</code> ou <code>5535999998888</code></p>`,
+    input: 'tel',
+    inputLabel: 'Seu WhatsApp',
+    inputPlaceholder: 'DDD + numero',
+    confirmButtonText: 'Salvar',
+    showCancelButton: true,
+    cancelButtonText: 'Agora nao',
+    allowOutsideClick: false,
+    inputValidator: (value) => {
+      const normalizado = normalizarTelefoneBR(value);
+      if (!normalizado) return 'Numero invalido. Informe DDD + numero (com ou sem +55).';
+      return undefined;
+    }
+  });
+
+  if (!isConfirmed || isDismissed) return;
+
+  const normalizado = normalizarTelefoneBR(tel);
+  try {
+    await ref.update({
+      whats: normalizado,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    if (window.usuarioLogado && window.usuarioLogado.id === usuario.id) {
+      window.usuarioLogado.whats = normalizado;
+    }
+
+    Swal.fire({ icon: 'success', title: 'WhatsApp salvo!', confirmButtonText: 'OK' });
+  } catch (e) {
+    console.error('Erro ao salvar Whats:', e);
+    Swal.fire({ icon: 'error', title: 'Nao foi possivel salvar', text: 'Tente novamente.' });
+  }
+}
+
+
 const main = () => {  
     linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
     
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
+        if (usuarioLogado) {
+            garantirWhatsNoFirestore(usuarioLogado.id);
+        }
         // criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
         deslogar.style.display = usuarioLogado != null ? 'inline' : 'none';
     });
