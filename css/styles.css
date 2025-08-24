@@ -11654,8 +11654,13 @@ textarea.form-control-lg {
 }
 
 #itensVendaCard div {
-  padding: 5px;
-  border-radius: 15px;
+     padding: 5px;
+    border-radius: 15px;
+    height: -webkit-fill-available;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .medieval-card {

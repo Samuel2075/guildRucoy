@@ -311,8 +311,19 @@ const criarComponenteListaVendas = (element) => {
       </button>`;
   }
 
+  // Botão remover aparece só se dono da venda === usuario logado
+  let botaoRemover = "";
+  if (usuarioLogado && usuarioLogado.id === element.usuario.id) {
+    botaoRemover = `
+      <button type="button" style="width: -webkit-fill-available;" 
+              class="btn btn-danger btn-sm mt-2"
+              onclick="removerVenda('${element.id}')">
+        Remover venda
+      </button>`;
+  }
+
   const html = `
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div class="card shadow medieval-card">
       <div class="card-body">
         <h5 class="card-title medieval-title" id="item-name">${element.item}</h5>
@@ -320,12 +331,14 @@ const criarComponenteListaVendas = (element) => {
         <p class="card-text"><strong>Vendedor:</strong> ${element.usuario.nick}</p>
         <p class="card-text"><strong>Preco:</strong> <span id="item-price">${element.preco}</span></p>
         ${botaoWhats}
+        ${botaoRemover}
       </div>
     </div>
   </div>`;
   
   return html;
 };
+
 
 const trocarItem = async (item, pontoValor) => {
 
@@ -503,6 +516,27 @@ async function garantirWhatsNoFirestore(usuarioId) {
   }
 }
 
+async function removerVenda(vendaId) {
+  const confirmacao = await Swal.fire({
+    title: 'Tem certeza?',
+    text: 'Deseja remover esta venda?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sim, remover',
+    cancelButtonText: 'Cancelar'
+  });
+
+  if (confirmacao.isConfirmed) {
+    try {
+      await db.collection("itemsVenda").doc(vendaId).delete();
+      Swal.fire({ icon: 'success', title: 'Venda removida com sucesso' });
+      pegarTodasVendas(); // recarrega lista
+    } catch (e) {
+      console.error('Erro ao remover venda:', e);
+      Swal.fire({ icon: 'error', title: 'Erro ao remover venda' });
+    }
+  }
+}
 
 const main = () => {  
     linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
