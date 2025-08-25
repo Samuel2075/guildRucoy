@@ -123,10 +123,32 @@ const pegarTodasTrocas = async () => {
     });
 }
 
-const adicionarQuest = async (nome, ponto, descricao) => {
-    const questObj = { nome, ponto, descricao }
-    await db.collection('quests').add(questObj);
-}
+// Supondo: const db = firebase.firestore();
+
+const adicionarQuest = async (nome, pontos, descricao) => {
+  try {
+    // Validações simples
+    if (!nome || !descricao) throw new Error("Informe 'nome' e 'descricao'.");
+
+    // Normalizações (Firestore não aceita undefined)
+    const doc = {
+      nome: String(nome).trim(),
+      pontos: Number.isFinite(Number(pontos))
+        ? Math.max(1, Math.min(3, Number(pontos))) // força 1–3
+        : 1,
+      descricao: String(descricao).trim(),
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    const ref = await db.collection('quests').add(doc);
+    console.log('Quest adicionada:', ref.id);
+    return ref.id;
+  } catch (err) {
+    console.error('Erro ao adicionar quest:', err);
+    alert(`Erro ao salvar quest: ${err.message}`);
+    throw err;
+  }
+};
 
 const pegarTodasQuestsSemanais = async () => {
     questsSemana = [];
@@ -264,7 +286,7 @@ const criarComponenteListaTroca = (itemTroca) => {
 const criarComponenteListaQuest = (questComponente) => {
     let liLista = document.createElement('li');
     let btnDeletarQuest = document.createElement('button');
-    let stringNomeQuest = questComponente.nome + "   /   " + questComponente.descricao + "   /   " + questComponente.ponto + " Pontos";
+    let stringNomeQuest = questComponente.nome + "   /   " + questComponente.descricao + "   /   " + questComponente.pontos + " Pontos";
     liLista.className = "list-group-item liListaTroca";
     liLista.innerText = stringNomeQuest;
     btnDeletarQuest.innerText = "Remover";
