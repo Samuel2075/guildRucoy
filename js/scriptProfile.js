@@ -286,7 +286,7 @@ const criarComponenteListaTroca = (itemTroca) => {
 const criarComponenteListaQuest = (questComponente) => {
     let liLista = document.createElement('li');
     let btnDeletarQuest = document.createElement('button');
-    let stringNomeQuest = questComponente.nome + "   /   " + questComponente.descricao + "   /   " + questComponente.pontos + " Pontos";
+    let stringNomeQuest = questComponente.nome + "   /   " + questComponente.descricao + "   /   " + questComponente.ponto + " Pontos";
     liLista.className = "list-group-item liListaTroca";
     liLista.innerText = stringNomeQuest;
     btnDeletarQuest.innerText = "Remover";
