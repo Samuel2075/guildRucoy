@@ -87,7 +87,7 @@ const criarComponenteListaQuest = (index, quest) => {
 
     if (verificarQuestConcluida(quest)) {
         btnConcluir.className = 'btn btn-danger';
-        btnConcluir.innerText = 'Quest Finalizada';
+        btnConcluir.innerText = 'Finalizada';
     } else {
         btnConcluir.className = 'btn btn-success';
         btnConcluir.innerText = 'Concluir';
