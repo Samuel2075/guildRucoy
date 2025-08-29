@@ -454,7 +454,7 @@ const checarUsuarioLogado = () => {
 
 const preencherCampos = () => { 
     //pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
-    pontosH6.innerHTML = `<img src="../srCoin.png" alt="Pontos" style="width:20px; vertical-align:middle; margin-right:5px;">${usuarioLogado.pontos}`;
+    pontosH6.innerHTML = `<img src="../srCoin.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;">${usuarioLogado.pontos}`;
     nickH6.innerText = usuarioLogado.nick;
 }
 
