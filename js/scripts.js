@@ -262,7 +262,8 @@ const criarComponenteItem = (itemElement) => {
     divFeature.className = 'feature bg-gradient text-white rounded-3 mb-4 mt-4';
     h2Pontos.className = 'fs-4 fw-bold';
 
-    h2Pontos.innerText = 'Pontos: ' + itemElement.ponto;
+    // h2Pontos.innerText = 'Pontos: ' + itemElement.ponto;
+    h2Pontos.innerHTML = `<img src="../assets/icons/srCoin.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> $${itemElement.ponto}`;
     pNome.innerText = itemElement.nome;
     btnTrocaItem.className = 'btn btn-primary';
     btnTrocaItem.innerText = 'Trocar';
@@ -362,7 +363,7 @@ const trocarItem = async (item, pontoValor) => {
                 usuarioLogado.pontos = usuarioLogado.pontos - pontoValor;
                 atualizarJogador(usuarioLogado);
                 //pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
-                pontosH6.innerHTML = `<img src="../srCoin.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> $${usuarioLogado.pontos}`;
+                pontosH6.innerHTML = `<img src="../assets/icons/srCoin.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> $${usuarioLogado.pontos}`;
                 Swal.fire({
                     title: 'Troca efetuada com sucesso',
                     text: "Troca efetuada com sucessa, por favor avise o ADM.",
@@ -454,7 +455,7 @@ const checarUsuarioLogado = () => {
 
 const preencherCampos = () => { 
     //pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
-    pontosH6.innerHTML = `<img src="../srCoin.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> $${usuarioLogado.pontos}`;
+    pontosH6.innerHTML = `<img src="../assets/icons/srCoin.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> $${usuarioLogado.pontos}`;
     nickH6.innerText = usuarioLogado.nick;
 }
 
