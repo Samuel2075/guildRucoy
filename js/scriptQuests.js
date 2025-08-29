@@ -84,7 +84,7 @@ const criarComponenteListaQuest = (index, quest) => {
     h6Pontos.style.marginRight = '15px';
     // h6Pontos.innerText = 'Pontos: ' + quest.ponto;
     h6Pontos.innerHTML = `<img src="../assets/icons/xp.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> ${quest.ponto}`;
-
+    btnConcluir.style.width = '120px';
     if (verificarQuestConcluida(quest)) {
         btnConcluir.className = 'btn btn-danger';
         btnConcluir.innerText = 'Finalizada';
