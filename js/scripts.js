@@ -361,8 +361,8 @@ const trocarItem = async (item, pontoValor) => {
                 adicionarItemTroca(item, pontoValor, usuarioLogado.nick);
                 usuarioLogado.pontos = usuarioLogado.pontos - pontoValor;
                 atualizarJogador(usuarioLogado);
-                pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
-
+                //pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
+                pontosH6.innerHTML = `<img src="../srCoin.png" alt="Pontos" style="width:20px;">`;
                 Swal.fire({
                     title: 'Troca efetuada com sucesso',
                     text: "Troca efetuada com sucessa, por favor avise o ADM.",
