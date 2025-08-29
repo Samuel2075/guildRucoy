@@ -413,7 +413,7 @@ const efetuarLogin = () => {
                 confirmButtonText: 'ok'
             });
             // criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
-            // linkProfile.style.display = 'block';
+            linkProfile.style.display = 'flex';
             deslogar.style.display = 'inline';
             skills.style.display = 'inline';
         }    
@@ -540,7 +540,7 @@ async function removerVenda(vendaId) {
 }
 
 const main = () => {  
-    linkProfile.style.display = usuarioLogado != null ? 'block' : 'none';
+    linkProfile.style.display = usuarioLogado != null ? 'flex' : 'none';
     
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
