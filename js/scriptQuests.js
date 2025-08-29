@@ -68,6 +68,7 @@ const criarComponenteListaQuest = (index, quest) => {
     let divCollapseDesc = document.createElement('div');
     let divCardBodyDesc = document.createElement('div');
     let divCardPontoBtn = document.createElement('div');
+    divCardPontoBtn.style.display = 'flex';
     divCardHeader.className = 'card-header questCard';
     divCardHeader.setAttribute('id', 'heading' + index);
     divCard.className = 'card';
@@ -80,7 +81,10 @@ const criarComponenteListaQuest = (index, quest) => {
     btnTitulo.setAttribute('aria-controls', '#collapse' + index);
     btnTitulo.innerText = quest.nome;
     h6Pontos.className = 'pontosTexto';
-    h6Pontos.innerText = 'Pontos: ' + quest.ponto;
+    h6Pontos.style.marginRight = '15px';
+    // h6Pontos.innerText = 'Pontos: ' + quest.ponto;
+    h6Pontos.innerHTML = `<img src="../assets/icons/xp.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> ${quest.ponto}`;
+
     if (verificarQuestConcluida(quest)) {
         btnConcluir.className = 'btn btn-danger';
         btnConcluir.innerText = 'Quest Finalizada';
@@ -219,7 +223,8 @@ const preencherCampos = () => {
             totalPontosquestsPlayer = totalPontosquestsPlayer + element.ponto;
         });
     }
-    pontosH6.innerText = "Pontos Quests: " + totalPontosquestsPlayer;
+    // pontosH6.innerText = "Pontos Quests: " + totalPontosquestsPlayer;
+    pontosH6.innerHTML = `<img src="../assets/icons/xp.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> ${totalPontosquestsPlayer}`;
     levelGuild.innerText = usuarioLogado.levelGuild;
     nickH6.innerText = usuarioLogado.nick;
 }
