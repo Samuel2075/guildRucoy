@@ -20,6 +20,8 @@ let quests = [];
 let pontosTotalTodasQuests = 0;
 let totalPontosquestsPlayer = 0;
 let xpGuildDivProgress = document.createElement('div');
+let eloImg = document.querySelector("#eloImg");
+let eloNome = document.querySelector("#eloNome");
 
 const pegarTodasQuests = async () => {
     await db.collection('questsSemana').get().then(data => {
@@ -43,6 +45,21 @@ const pegarTodosJogadores = async () => {
 
 const atualizarJogador = (id, usuario) => {
     db.collection("jogadores").doc(id).set(usuario);
+}
+
+async function pegarEloPeloId(id) {
+  const eloId = Number(id);
+
+  const snap = await db
+    .collection('elos')
+    .where('id', '==', eloId)
+    .limit(1)
+    .get();
+
+  if (snap.empty) return null;
+
+  const doc = snap.docs[0];
+  return { docId: doc.id, ...doc.data() };
 }
 
 const cadastrarJogadorLevelUp = async (usuario) => {
@@ -161,7 +178,7 @@ const finalizarQuest = (quest) => {
             usuarioLogado.xpQuest = usuarioLogado.xpQuest + quest.ponto;
             if (usuarioLogado.questsFinalizadas.length == quests.length) {
                 usuarioLogado.levelGuild++;
-                levelGuild.innerText = levelGuild;
+                // levelGuild.innerText = levelGuild;
                 // usuarioLogado.pontosAtributos = usuarioLogado.pontosAtributos + 5;
                 Swal.fire({
                     title: 'Level Up!',
@@ -225,7 +242,7 @@ const preencherCampos = () => {
     }
     // pontosH6.innerText = "Pontos Quests: " + totalPontosquestsPlayer;
     pontosH6.innerHTML = `<img src="../assets/icons/xp.png" alt="Pontos" style="width: 35px;vertical-align: middle;margin-right: 5px;"> ${totalPontosquestsPlayer}`;
-    levelGuild.innerText = usuarioLogado.levelGuild;
+    // levelGuild.innerText = usuarioLogado.levelGuild;
     nickH6.innerText = usuarioLogado.nick;
 }
 
@@ -254,6 +271,14 @@ const atualizarBarraProgressoLevel = () => {
 const main = () => {
     pegarTodosJogadores().then(() => {
         checarUsuarioLogado();
+        pegarEloPeloId(usuarioLogado.elo).then((elo) => {
+            if (!elo) {
+                console.warn("Elo não encontrado!");
+                return;
+            }
+            eloImg.src = `../assets/img/elos/${elo.imagem}`;
+            eloNome.innerText = elo.nome;
+        });
     });
 
     pegarTodasQuests().then(() => {

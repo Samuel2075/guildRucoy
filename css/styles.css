@@ -93,13 +93,6 @@
   position: absolute;
   right: 90px;
 }
-.profile {
-  width: 50px;
-  padding: 5px;
-  background-color: white;
-  margin-right: 10px;
-  border-radius: 15px;
-}
 
 *,
 *::before,
@@ -11729,7 +11722,12 @@ body{
 .profile{
   border-radius: 12px;
   border: 2px solid var(--guild-gold);
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  padding: 5px;
+  /* background: #fff; */
 }
 
 /* Hero/Banner temático */
@@ -11908,6 +11906,7 @@ footer.bg-dark{
 }
 @media (max-width: 575.98px){
   #banner h1{ font-size: 1.6rem; }
+  .titulo { margin-top: 65px; }
 }
 
 body{

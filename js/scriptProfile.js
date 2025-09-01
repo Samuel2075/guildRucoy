@@ -32,6 +32,10 @@ let listaEventosVencedor = document.querySelector("#listaEventosVencedor");
 let btnCalcularPontos = document.querySelector("#btnCalcularPontos");
 let questsSemana = [];
 let itensVenda = [];
+let elos = [];
+let jogadoresQueAumentaramElo = [];
+let eloImg = document.querySelector("#eloImg");
+let eloNome = document.querySelector("#eloNome");
 
 const pegarTodosJogadores = async () => {
     await db.collection('jogadores').get().then(data => {
@@ -150,6 +154,17 @@ const adicionarQuest = async (nome, pontos, descricao) => {
   }
 };
 
+const pegarTodosElos = async () => {
+    elos = [];
+    await db.collection('elos').get().then(data => {
+        data.docs.forEach(element => {
+            const elo = element.data();
+            // elo.id = element.id;
+            elos.push(elo);
+        });
+    });
+}
+
 const pegarTodasQuestsSemanais = async () => {
     questsSemana = [];
     await db.collection('questsSemana').get().then(data => {
@@ -247,6 +262,21 @@ const criarGraficoSkill = () => {
 
 }
 
+async function pegarEloPeloId(id) {
+  const eloId = Number(id);
+
+  const snap = await db
+    .collection('elos')
+    .where('id', '==', eloId)
+    .limit(1)
+    .get();
+
+  if (snap.empty) return null;
+
+  const doc = snap.docs[0];
+  return { docId: doc.id, ...doc.data() };
+}
+
 const checarUsuarioLogado = () => {
     if (usuarioLogado != null) {
         let jogadorFiltroLogado = jogadores.filter((jogador) => jogador.id == usuarioLogado);
@@ -323,7 +353,7 @@ const preencherCampos = () => {
             totalPontosquestsPlayer = totalPontosquestsPlayer + element.ponto;
         });
     }
-    levelGuild.innerText = usuarioLogado.levelGuild;
+    // levelGuild.innerText = usuarioLogado.levelGuild;
     nickH6.innerText = usuarioLogado.nick;
 }
 
@@ -645,6 +675,16 @@ const calcularPontosQuests = (jogadorCorrente) => {
     return jogadorCorrente.questsFinalizadas.length > 0 ? Math.round(pontosTotais / 2) : 0;
 }
 
+const totalPontosQuestsSemanaJogador = (jogadorCorrente) => {
+    pontosTotais = 0;
+    if (jogadorCorrente.questsFinalizadas.length > 0) {
+        jogadorCorrente.questsFinalizadas.forEach(element => {
+            pontosTotais = pontosTotais + element.ponto;
+        });
+    }
+    return jogadorCorrente.questsFinalizadas.length > 0 ? pontosTotais : 0;
+}
+
 const shuffle = (v) => {
     for (var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
     return v;
@@ -690,6 +730,10 @@ const verificarJogadoresVencedoresEventos = () => {
     return '1º ' + jogadoresPontos[0].nick + ' / ' + '2º ' + jogadoresPontos[1].nick + ' / ' + '3º ' + jogadoresPontos[2].nick;
 }
 
+// function pegarEloPeloId(id) {
+//   return elos.find(obj => Number(obj.id) === Number(id));
+// }
+
 const calcularPontos = () => {
     Swal.fire({
         title: 'Deseja realmente recalcular todos os pontos?',
@@ -707,6 +751,7 @@ const calcularPontos = () => {
         if (result.isConfirmed) {
             let pontosSkill = 0;
             let pontos = 0;
+            let pontosQuestJogador = 0;
             criarBkp(jogadores);
             Swal.fire({
                 title: 'Jogadores vencedores dos eventos!',
@@ -714,8 +759,9 @@ const calcularPontos = () => {
                 icon: 'success',
                 confirmButtonText: 'ok'
             });
-            pegarTodosJogadores().then(() => {
-                jogadores.forEach(element => {
+            pegarTodosJogadores().then(async() => {
+                const pontosTotaisQuests = (questsSemana || []).reduce((total, q) => total + (Number(q?.ponto) || 0),0);
+                jogadores.forEach(async (element) => {
                     if (element.valorColeta >= 300000) {
                         pontosSkill = 0;
                         pontosSkill = (element.defence + element.distance + element.level + element.magic + element.melee) / 200;
@@ -723,7 +769,16 @@ const calcularPontos = () => {
                             pontosSkill = 1;
                         }
                         pontos = Math.round(pontosSkill);
+                        pontosQuestJogador = totalPontosQuestsSemanaJogador(element);
                         element.pontos = (element.pontos + pontos) + (parseInt(element.valorColeta) / 100000) + calcularPontosQuests(element);
+                        pontosQuestJogador = pontosTotaisQuests;
+                        if(pontosQuestJogador == pontosTotaisQuests) {
+                            element.totalAjuda++;
+                            if(element.totalAjuda == element.elo + 1) {
+                                element.elo++;
+                                jogadoresQueAumentaramElo.push(element);
+                            }
+                        }
                     }
                     element.quiz = 0;
                     element.escondeEsconde = 0;
@@ -855,25 +910,34 @@ const cadastrarItensVenda = () => {
 const main = () => {
     cadastrarItensVenda();
     pegarTodasQuestsSemanais();
-
-    pegarTodosJogadores().then(() => {
-        checarUsuarioLogado();
-        criarGraficoSkill();
-        listarContribuicoes();
-    });
-
-    pegarTodosAdms().then(() => {
-        verificarPermissoes();
-    });
-
-    pegarTodasQuests().then(() => {
-        listarQuests();
-    });
-    pegarTodosEventos().then(() => {
-        listaEventos();
-    });
-    pegarTodosVencedoresEventos().then(() => {
-        listaEventosVencedores();
+    pegarTodosElos().then(() => {
+        pegarTodosJogadores().then(() => {
+            checarUsuarioLogado();
+            pegarEloPeloId(usuarioLogado.elo).then((elo) => {
+                if (!elo) {
+                    console.warn("Elo não encontrado!");
+                    return;
+                }
+                eloImg.src = `../assets/img/elos/${elo.imagem}`;
+                eloNome.innerText = elo.nome;
+            });
+            criarGraficoSkill();
+            listarContribuicoes();
+        });
+    
+        pegarTodosAdms().then(() => {
+            verificarPermissoes();
+        });
+    
+        pegarTodasQuests().then(() => {
+            listarQuests();
+        });
+        pegarTodosEventos().then(() => {
+            listaEventos();
+        });
+        pegarTodosVencedoresEventos().then(() => {
+            listaEventosVencedores();
+        });
     });
 }
 

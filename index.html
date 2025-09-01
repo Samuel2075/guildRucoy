@@ -18,19 +18,24 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbarFixed">
             <div class="container px-lg-5 alignNav">
+                <!-- <img src="assets/icons/close.png" style="width: 50px;background: linear-gradient(180deg, #e0b861, #c8a14a);border-radius: 15px;"> -->
                 <div class="col-md-4" style="display: flex;flex-direction: row-reverse;justify-content: space-evenly;align-items: center;">
+                    
                     <h4 id="pontosH6" class="navH6"></h4>
-                        <a id="linkProfile" href="profile.html" style="text-decoration: none;display: flex!important;align-items: center;">
-                        <img class="profile" style="width: 50px;padding: 5px;background-color: white;" src="assets/img/profile.png" alt="">
-                        <h6 id="nickH6" class="navH6"></h6>
-                    </a>
+                    <h6 id="nickH6" class="navH6"></h6>
+                    <div class="profile" id="linkProfile">
+                        <img id="eloImg" style="width: 70px;padding: 5px;" src="" alt="">
+                        <h6 id="eloNome" class="navH6" style="margin-bottom: 7px;"></h6>
+                    </div>
                 </div>
 
                 <!-- Bloco central com botões -->
-                <div class="col-md-8 d-flex nav-actions">
+                <div class="col-md-8 d-flex nav-actions" style="flex-wrap: wrap;">
                     <a class="btn btn-primary btn--nav" id="questBtn" href="quests.html">Quests</a>
+                    <a class="btn btn-primary btn--nav" id="questBtn" href="profile.html">Perfil</a>
                     <button type="button" id="btnLogin" class="btn btn-primary btn--nav" data-toggle="modal" data-target="#modalLogin">Login</button>
                     <a id="skills" class="btn btn-primary btnPadding btn--nav" href="skill.html">Atualizar Skills</a>
+                    <button type="button" class="btn btn-primary btn--nav" data-toggle="modal" data-target="#modalElo">Elos</button>
                     <button id="deslogar" onclick="deslogarUsuario()" class="btn btn-danger btnPadding btn--nav">Deslogar</button>
                 </div>
             </div>
@@ -70,7 +75,7 @@
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 rounded-3 text-center">
                     <div class="m-4 m-lg-5" id="banner">
-                        <h1 class="display-5 fw-bold">Bem vindo a Guild Sociedade Revolucionária!</h1>
+                        <h1 class="display-5 fw-bold titulo">Bem vindo a Guild Sociedade Revolucionária!</h1>
                         <p class="fs-4">Este site tem como objetivo facilitar o acesso de vocês aos itens do game. Criei um sistema de pontos para que sejam trocados por itens.</p>
                         <!-- <a class="btn btn-primary" id="questBtn" href="quests.html">Quests</a>
                         <button type="button" id="btnLogin" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Login</button>
@@ -149,6 +154,112 @@ Acessem o perfil de vocês para cadastrar ou gerenciar suas próprias ofertas.</
                 </div>
             </div>
         </section>
+
+        <div class="modal fade" id="modalElo" tabindex="-1" role="dialog" aria-labelledby="modalEloLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(180deg, #2b231b, #221c15) !important;">
+                    <h5 class="modal-title" id="modalEloLabel">Elos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background: linear-gradient(180deg, #2b231b, #221c15) !important;">
+                    <div class="row" style="text-align: justify;font-size: 13px;color: var(--guild-gold-2);">
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/novato.png" alt="">
+                            <h5>
+                                Novato
+                            </h5>
+                            <p style="font-weight: bold;">Não recebe dimas</p>
+                            <p>
+                                O Novato está no início de sua caminhada dentro da guild. Aqui você descobre como funcionamos, aprende sobre nossas trocas e eventos, e inicia seus primeiros passos rumo à glória. Mostre sua vontade de crescer e ajudar, pois juntos sempre retribuímos o esforço de cada membro.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/sentinela.png" alt="">
+                            <h5>
+                                Sentinela
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 5 dimas</p>
+                            <p>
+                                Você já provou sua dedicação à guild. Como Sentinela, protege nossos valores e ajuda a manter todos unidos, seja doando, participando das trocas ou apoiando nos eventos. A partir daqui, sua voz começa a ecoar mais forte.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/guardiao.png" alt="">
+                            <h5>
+                                Guardião
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 10 dimas</p>
+                            <p>
+                                O Guardião é aquele que, além de colaborar, já inspira os demais. Você está sempre presente nas quests, eventos e doações, e é visto como um verdadeiro exemplo de união. A guild confia em você como em uma muralha firme.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/campeao.png" alt="">
+                            <h5>
+                                Campeão
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 15 dimas</p>
+                            <p>
+                                O Campeão já é um herói talentoso da guild. Aqui você demonstra conquistas notáveis, contribui em grandes eventos e ajuda os novatos a crescerem. Seu nome é lembrado entre todos como alguém que honra nossa bandeira.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/tita.png" alt="">
+                            <h5>
+                                Titã
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 20 dimas</p>
+                            <p>
+                                O Titã é imenso em presença e generosidade. Você é um dos pilares da guild, sempre doando, participando ativamente das quests e mantendo o espírito de colaboração vivo. Aqui, sua força se torna referência para todos.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/epico.png" alt="">
+                            <h5>
+                                Épico
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 25 dimas</p>
+                            <p>
+                                Ser Épico é marcar história. Você já participou de inúmeros eventos, quests e doações que ajudaram todos a prosperar. Sua jornada inspira e motiva, sendo lembrada como um exemplo vivo de dedicação.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/lendario.png" alt="">
+                            <h5>
+                                Lendário
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 30 dimas</p>
+                            <p>
+                                O Lendário não apenas participa, mas deixa um legado. Sua contribuição em gold, eventos e apoio aos membros é tão grande que já se tornou parte da história da guild. Seu nome é lembrado em cada vitória.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/mitico.png" alt="">
+                            <h5>
+                                Mítico
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 35 dimas</p>
+                            <p>
+                                O Mítico é envolto em respeito. Você já superou todas as expectativas e representa a guild com honra em todos os lugares. Aqui, sua dedicação é vista com muita reverência, e você se torna inspiração para todos que desejam crescer.
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="display: flex;align-items: center;flex-direction: column;">
+                            <img src="assets/img/elos/imortal.png" alt="">
+                            <h5>
+                                Imortal
+                            </h5>
+                            <p style="font-weight: bold;">Ganha 50 dimas</p>
+                            <p>
+                                O Imortal alcançou o topo. Sua colaboração, lealdade e esforço pela guild o tornaram eterno em nossa história. Você não apenas participa: você construiu um legado para que todos prosperassem. Este é o elo máximo da glória, onde o esplendor da benevolência alcança o mais sublime dos elos. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Guild Sociedade Revolucionária 2024</p></div>

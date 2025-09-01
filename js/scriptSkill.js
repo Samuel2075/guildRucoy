@@ -19,7 +19,7 @@ const btnAdcImage = document.querySelector('.btnAdcImagens');
 const imagePreview = document.querySelector('.preview');
 const barraProgresso = document.querySelector('.barraProgresso');
 const btnAtualizarSkill = document.querySelector('.btnAtualizarSkill');
-let pontosH6 = document.querySelector("#pontosH6");
+// let pontosH6 = document.querySelector("#pontosH6");
 let nickH6 = document.querySelector("#nickH6");
 const levelInput  = document.querySelector('#levelInput');
 const meleeInput  = document.querySelector('#meleeInput');
@@ -67,7 +67,7 @@ const checarUsuarioLogado = () => {
 }
 
 const preencherCampos = () => { 
-    pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
+    // pontosH6.innerText = "Pontos: " + usuarioLogado.pontos;
     nickH6.innerText = usuarioLogado.nick;
 }
 

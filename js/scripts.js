@@ -26,6 +26,9 @@ let questBtn = document.querySelector("#questBtn");
 let linkProfile = document.querySelector("#linkProfile");
 let skills = document.querySelector("#skills");
 let criaturas = document.querySelector("#criaturas");
+let eloImg = document.querySelector("#eloImg");
+let eloNome = document.querySelector("#eloNome");
+
 
 let itens = [];
 let itemsVenda = [];
@@ -65,12 +68,32 @@ const pegarTodasVendas = async () => {
 }
 
 const adicionarItemTroca = async (item, ponto, jogador) => {
-    const itemTroca = {item, ponto, jogador}
+    const itemTroca = {item, ponto, jogador};
     await db.collection('trocas').add(itemTroca);
+}
+
+const adicionarElo = async (id, nome, imagem) => {
+    const elo = {id, nome, imagem};
+    await db.collection('elos').add(elo);
 }
 
 const atualizarJogador = (usuario) => {
     db.collection("jogadores").doc(usuario.id).set(usuario)
+}
+
+async function pegarEloPeloId(id) {
+  const eloId = Number(id);
+
+  const snap = await db
+    .collection('elos')
+    .where('id', '==', eloId)
+    .limit(1)
+    .get();
+
+  if (snap.empty) return null;
+
+  const doc = snap.docs[0];
+  return { docId: doc.id, ...doc.data() };
 }
 
 const criarRankSkill = (opcaoSkill) => {
@@ -375,7 +398,7 @@ const trocarItem = async (item, pontoValor) => {
     }
 }
 
-const efetuarLogin = () => {
+const efetuarLogin = async () => {
     let nick = document.getElementById("nickInput").value;
     let senha = document.getElementById("senhaInput").value;
     
@@ -540,6 +563,19 @@ async function removerVenda(vendaId) {
   }
 }
 
+// async function adicionarEloLote() {
+//     await adicionarElo(1, 'Novato', 'novato.png', 5, );
+//     await adicionarElo(2, 'Aspirante', 'aspirante.png', 6,);
+//     await adicionarElo(3, 'Sentinela', 'sentinela.png', 7);
+//     await adicionarElo(4, 'Guardião', 'guardiao.png', 8);
+//     await adicionarElo(5, 'Campeão', 'campeao.png', 9);
+//     await adicionarElo(6, 'Titã', 'tita.png', 10);
+//     await adicionarElo(7, 'Épico', 'epico.png', 11);
+//     await adicionarElo(8, 'Lendário', 'lendario.png', 12);
+//     await adicionarElo(9, 'Mítico', 'mitico.png', 13);
+//     await adicionarElo(10, 'Imortal', 'imortal.png', 14);
+// }
+
 const main = () => {  
     linkProfile.style.display = usuarioLogado != null ? 'flex' : 'none';
     
@@ -547,6 +583,14 @@ const main = () => {
         checarUsuarioLogado();
         if (usuarioLogado) {
             garantirWhatsNoFirestore(usuarioLogado.id);
+            pegarEloPeloId(usuarioLogado.elo).then((elo) => {
+                if (!elo) {
+                    console.warn("Elo não encontrado!");
+                    return;
+                }
+                eloImg.src = `../assets/img/elos/${elo.imagem}`;
+                eloNome.innerText = elo.nome;
+            });
         }
         // criaturas.style.display = usuarioLogado != null && usuarioLogado.levelGuild >= 3 ? 'inline' : 'none';
         deslogar.style.display = usuarioLogado != null ? 'inline' : 'none';
