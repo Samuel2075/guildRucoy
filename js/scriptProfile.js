@@ -774,7 +774,7 @@ const calcularPontos = () => {
                         pontosQuestJogador = pontosTotaisQuests;
                         if(pontosQuestJogador == pontosTotaisQuests) {
                             element.totalAjuda++;
-                            if(element.totalAjuda == element.elo + 1) {
+                            if(element.totalAjuda == element.elo + 2) {
                                 element.elo++;
                                 jogadoresQueAumentaramElo.push(element);
                             }
