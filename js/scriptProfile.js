@@ -47,8 +47,8 @@ const pegarTodosJogadores = async () => {
     });
 }
 
-const adicionarJogador = async (defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos) => {
-    const player = { defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos }
+const adicionarJogador = async (defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos, elo, totalAjuda) => {
+    const player = { defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, criaturas, xpQuest, pontosAtributos, elo, totalAjuda }
     await db.collection('jogadores').add(player);
 }
 
@@ -843,7 +843,7 @@ const cadastrarJogador = () => {
                     confirmButtonText: 'ok'
                 });
             } else {
-                // defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests
+                // defence, distance, escondeEsconde, level, magic, melee, nick, pvp, quiz, pontos, senha, removerCache, valorColeta, questsFinalizadas, levelGuild, totalPontosQuests, pontosAtributos, elo, totalAjuda
                 adicionarJogador(
                     defesaCadastro === "" ? 0 : parseInt(defesaCadastro),
                     distanciaCadastro === "" ? 0 : parseInt(distanciaCadastro),
@@ -863,7 +863,9 @@ const cadastrarJogador = () => {
                     0,
                     criaturas,
                     xpQuest,
-                    pontosAtributos);
+                    pontosAtributos,
+                    1,
+                    0);
                 Swal.fire({
                     title: 'Jogador cadastrado com sucesso',
                     icon: 'success',
