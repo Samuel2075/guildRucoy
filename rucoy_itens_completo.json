@@ -1079,6 +1079,30 @@
     {
       "nome": "Tracker Scroll",
       "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Assassin's Key",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Vampire's Key",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Drow's Key",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Lizard's Key",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Gargoyle's Key",
+      "Fundo": "sem fundo"
+    },
+    {
+      "nome": "Minotaur's Key",
+      "Fundo": "sem fundo"
     }
   ]
 }
