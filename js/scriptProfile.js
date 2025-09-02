@@ -506,15 +506,16 @@ const listarItensVendaFundo = () => {
         }
     });
 
-    var optionSelect = document.createElement('option');
-    optionSelect.value = "azul";
-    optionSelect.innerHTML = "azul";
-    itemVenda.appendChild(optionSelect);
+    var optionSelectAzul = document.createElement('option');
+    optionSelectAzul.value = "azul";
+    optionSelectAzul.innerHTML = "azul";
+    itemVenda.appendChild(optionSelectAzul);
     itensVendaSemRepeticao.push("azul");
 
-    optionSelect.value = "roxo";
-    optionSelect.innerHTML = "roxo";
-    itemVenda.appendChild(optionSelect);
+    var optionSelectRoxo = document.createElement('option');
+    optionSelectRoxo.value = "roxo";
+    optionSelectRoxo.innerHTML = "roxo";
+    itemVenda.appendChild(optionSelectRoxo);
     itensVendaSemRepeticao.push("roxo");
     
 }
